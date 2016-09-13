@@ -1,0 +1,19 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "env": "dev",
+  "dev": {
+    "AKNCUrl": "http://akncemr-development.azurewebsites.net/",
+    "AKNCusername": "alaskauser",
+    "password": "Password@123",
+    "AKNCusername2": "swarajg",
+    "password2": "Password@123"
+  },
+  "staging": {
+    "AKNCUrl": "http://akncemr-staging.azurewebsites.net/",
+    "AKNCusername": "alaskauser",
+    "password": "Password@123",
+    "AKNCusername2": "swarajg",
+    "password2": "Password@123"
+  }
+}
