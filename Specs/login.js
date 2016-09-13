@@ -2,6 +2,7 @@
  * Created by bananee.dash on 5/24/2016.
  */
 var LoginPage = require('../Page Objects/LoginPage.js');
+var basePage = require('../Page Objects/basePage.js');
 var environment = require('../Environment.json');
 var envt = environment.env;
 var userName = (envt == 'dev' ? environment.dev.AKNCusername : environment.staging.AKNCusername);
@@ -22,7 +23,9 @@ describe('AKNC EMR',function () {
     it('should not allow login with invalid username',function () {
     	
         LoginPage.login('xyz',password);
-        expect(LoginPage.loginErrorElem).toBeDefined();
+        //expect(LoginPage.loginErrorElem).toBeDefined();
+        var result = basePage.isVisible(LoginPage.loginErrorElem);
+        expect(result).toBeTruthy();
     })
     it('should not allow login with invalid password',function () {
 
