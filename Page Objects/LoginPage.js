@@ -4,15 +4,14 @@
 
 var environment = require('../Environment.json');
 var envt = environment.env;
-var baseURL = environment.dev.AKNCUrl;
+var baseURL = (envt == 'dev' ? environment.dev.AKNCUrl : (envt == 'qa' ? environment.qa.AKNCUrl : environment.staging.AKNCUrl));
 //var userName = (envt == 'dev' ? environment.dev.AKNCusername : environment.staging.AKNCusername);
 //var password = (envt == 'dev' ? environment.dev.password : environment.staging.password);
 var LoginPage = function () {
     this.getEMR = function () {
         browser.get(baseURL);
-//        console.log(userName);
-//        console.log(password);
     }
+    
     this.userNameElem = element(by.id('UserName'));
     this.passwordElem = element(by.id('Password'));
     this.loginButtonElem = element(by.buttonText('Login'));

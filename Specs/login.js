@@ -5,8 +5,8 @@ var LoginPage = require('../Page Objects/LoginPage.js');
 var basePage = require('../Page Objects/basePage.js');
 var environment = require('../Environment.json');
 var envt = environment.env;
-var userName = (envt == 'dev' ? environment.dev.AKNCusername : environment.staging.AKNCusername);
-var password = (envt == 'dev' ? environment.dev.password : environment.staging.password);
+var userName = (envt == 'dev' ? environment.dev.AKNCusername : (envt == 'qa' ? environment.qa.AKNCusername : environment.staging.AKNCusername));
+var password = (envt == 'dev' ? environment.dev.password : (envt == 'qa' ? environment.qa.password : environment.staging.password));
 describe('AKNC EMR',function () {
     
     //LoginPage = new LoginPage();
@@ -41,7 +41,7 @@ describe('AKNC EMR',function () {
         var EC = protractor.ExpectedConditions;
         browser.wait(EC.visibilityOf(LoginPage.headerLogoElem));
         browser.ignoreSynchronization = false;
-        expect(browser.getCurrentUrl()).toEqual('http://akncemr-development.azurewebsites.net/#/home');
+        expect(browser.getCurrentUrl()).toEqual('http://akncemr-qa.azurewebsites.net/#/home');
         //expect(LoginPage.headerLogoElem).toBe(true);
     })
 })

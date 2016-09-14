@@ -18,7 +18,7 @@ exports.config = {
     useAllAngular2AppRoots: true,
     // Spec patterns are relative to the current working directory when
     // protractor is called.
-    specs: ['**//Specs/login.js'],
+    specs: ['**//Specs/HomePage.Validation.js'],
 
     // Options to be passed to Jasmine.
     jasmineNodeOpts: {

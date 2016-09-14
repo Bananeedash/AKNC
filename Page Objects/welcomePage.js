@@ -1,7 +1,7 @@
 /**
  * Created by bananee.dash on 5/24/2016.
  */
-module.exports = function () {
+var welcomePage = function () {
     this.welcomeMsg = element(by.xpath("//p[@class='cl-name']"));
     this.patients = element(by.className('pts'));
     this.EMR = element(by.className('emr'));
@@ -13,5 +13,7 @@ module.exports = function () {
     this.users = element(by.className('usr'));
     this.settings = element(by.className('stg'));
     
+    this.actionButtonElem = element.all(by.className('btn btn-default'));
 
 }
+ module.exports = new welcomePage;

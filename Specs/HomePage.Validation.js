@@ -1,49 +1,61 @@
 /**
  * Created by bananee.dash on 5/24/2016.
  */
-var homePage = require('D:/Protractor/AKNC/Page Objects/homepage.js');
+var welcomePage = require('../Page Objects/welcomePage.js');
+var basePage = require('../Page Objects/basePage.js');
 var loginPage = require('D:/Protractor/AKNC/Page Objects/LoginPage.js');
+var environment = require('../Environment.json');
+var envt = environment.env;
+var userName = (envt == 'dev' ? environment.dev.AKNCusername : (envt == 'qa' ? environment.qa.AKNCusername : environment.staging.AKNCusername));
+var password = (envt == 'dev' ? environment.dev.password : (envt == 'qa' ? environment.qa.password : environment.staging.password));
 describe('Home Page',function () {
     browser.ignoreSynchronization = true;
-    homePage = new homePage();
-    loginPage = new loginPage();
-
     loginPage.getEMR();
-    loginPage.login('alaskauser','Password@123');
+    loginPage.login(userName,password);
 
-        it('should display welcome message',function () {
+    it('should display welcome message',function () {
             var EC = protractor.ExpectedConditions;
-            browser.wait(EC.visibilityOf(homePage.welcomeMsg));
-            homePage.welcomeMsg.getText().then(function (welcomemsg) {
+            browser.wait(EC.visibilityOf(welcomePage.welcomeMsg));
+            browser.ignoreSynchronization = false;
+            welcomePage.welcomeMsg.getText().then(function (welcomemsg) {
             console.log(welcomemsg);
-        })
-        browser.ignoreSynchronization = false;
-        expect(homePage.welcomeMsg).toBeDefined();
+            
+            })
+        expect(welcomePage.welcomeMsg).toBeDefined();
 
     })
     it('should display Patients',function () {
-        expect(homePage.patients).toBeDefined();
+        expect(welcomePage.patients).toBeDefined();
     })
     it('should display Scheduling',function () {
-        expect(homePage.scheduling).toBeDefined();
+        expect(welcomePage.scheduling).toBeDefined();
     })
     it('should display Billing',function () {
-        expect(homePage.billing).toBeDefined();
+        expect(welcomePage.billing).toBeDefined();
     })
     it('should display Inbox',function () {
-        expect(homePage.inbox).toBeDefined();
+        expect(welcomePage.inbox).toBeDefined();
     })
     it('should display Wizard',function () {
-        expect(homePage.wizard).toBeDefined();
+        expect(welcomePage.wizard).toBeDefined();
     })
     it('should display Practice Management',function () {
-        expect(homePage.practiceMgmt).toBeDefined();
+        expect(welcomePage.practiceMgmt).toBeDefined();
     })
     it('should display Users',function () {
-        expect(homePage.users).toBeDefined();
+        expect(welcomePage.users).toBeDefined();
     })
     it('should display Settings',function () {
-        expect(homePage.settings).toBeDefined();
+        expect(welcomePage.settings).toBeDefined();
     })
-    /*it('should validate ')*/
+    it('should display action buttons',function(){
+    	expect(welcomePage.actionButtonElem.getText()).toEqual(['DME/CPAP','Sleep Lab','MRI Scanner','Infusion Nurse','EEG/EVP Lab',
+    	                                                          'Check-in','Check-out','Triage','Nurse','Provider','Prior Authorizations',
+    	                                                          'Benefits','Billing','Cafe','CMA','Medical Records','Referrals Out',
+    	                                                          'Scheduling']);
+    
+    	//expect(welcomePage.actionButtonElem.get(0).getText()).toBe('DME/CPAP');
+    	
+    })
+    
 })
