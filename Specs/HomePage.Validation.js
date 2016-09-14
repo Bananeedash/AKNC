@@ -57,5 +57,5 @@ describe('Home Page',function () {
     	//expect(welcomePage.actionButtonElem.get(0).getText()).toBe('DME/CPAP');
     	
     })
-    
+  
 })

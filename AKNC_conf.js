@@ -6,7 +6,9 @@ exports.config = {
 
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'chrome',
+        'shardTestFiles': true,
+        'maxInstances': 1
     },
     //useAllAngular2AppRoots: true,
     onPrepare: function () {
@@ -18,7 +20,9 @@ exports.config = {
     useAllAngular2AppRoots: true,
     // Spec patterns are relative to the current working directory when
     // protractor is called.
-    specs: ['**//Specs/HomePage.Validation.js'],
+    specs: ['**//Specs/login.js','**//Specs/HomePage.Validation.js'],
+    
+    //restartBrowserBetweenTests: true,
 
     // Options to be passed to Jasmine.
     jasmineNodeOpts: {
