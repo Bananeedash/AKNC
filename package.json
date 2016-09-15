@@ -1,5 +1,5 @@
 {
-	"name":"AKNC tests",
+	"name":"AKNCTests",
 	"version":"0.0.1",
 	"description":"Protractor Tests for Alaska Neurology Center",
 	"dependencies": {},
