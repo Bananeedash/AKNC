@@ -1,8 +1,8 @@
 /**
  * Created by bananee.dash on 5/24/2016.
  */
-var LoginPage = require('../Page Objects/LoginPage.js');
-var basePage = require('../Page Objects/basePage.js');
+var LoginPage = require('../Pages/LoginPage.js');
+var basePage = require('../Pages/basePage.js');
 var environment = require('../Environment.json');
 var envt = environment.env;
 var userName = (envt == 'dev' ? environment.dev.AKNCusername : (envt == 'qa' ? environment.qa.AKNCusername : environment.staging.AKNCusername));
@@ -11,7 +11,7 @@ describe('AKNC EMR',function () {
     
     //LoginPage = new LoginPage();
 
-    beforeEach(function () {
+	beforeEach(function () {
     	browser.ignoreSynchronization = true;
         LoginPage.getEMR();
     })

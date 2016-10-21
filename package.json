@@ -12,15 +12,17 @@
     	"selenium-server-standalone-jar": "^2.53.0",
     	"selenium-webdriver": "2.53.3",
     	"sync-request": "^2.0.1",
-    	"xlsx": "^0.8.0"
+    	"xlsx": "^0.8.0",
+    	"moment": "2.15.1"
   	},
   	"scripts": {
     	"test": "echo \"Error: no test specified\" && exit 1"
   	},
   	"repository":{
-  "type": "git",
-  "url": "git://github.com/Bananeedash/AKNC.git"
-},
+  		"type": "git",
+  		"url": "git://github.com/Bananeedash/AKNC.git"
+	},
   	"author": ""
+  	
 
 }

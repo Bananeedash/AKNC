@@ -12,7 +12,7 @@ exports.config = {
     },
     useAllAngular2AppRoots: true,
     onPrepare: function () {
-        browser.manage().window().setSize(1600,1000);  
+        browser.manage().window().maximize();  
     },
     restartBrowserBetweenTests: false,
     // Framework to use. Jasmine is recommended.
@@ -20,7 +20,8 @@ exports.config = {
     useAllAngular2AppRoots: true,
     // Spec patterns are relative to the current working directory when
     // protractor is called.
-    specs: ['./Specs/login.js','./Specs/HomePage.Validation.js'],
+    specs: ['./Specs/*.js'],
+    //specs: ['./Specs/patientHubValidations.js'],
     
     //restartBrowserBetweenTests: true,
 
