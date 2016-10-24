@@ -170,6 +170,22 @@ var patientSearchScreen = function() {
 		
 	}
 	
+	this.resetLinkFunctionality = function(){
+		self.searchCriteria1Elem.sendKeys(constants.DOBInput);
+		self.goButtonElem.click();
+		self.resetSearchFields();
+		expect(self.searchCriteria1Elem.getText()).toBe('');
+		self.searchCriteria2Elem.sendKeys(constants.LNInput);
+		self.goButtonElem.click();
+		self.resetSearchFields();
+		expect(self.searchCriteria2Elem.getText()).toBe('');
+		self.searchCriteria3Elem.sendKeys(constants.MRNInput);
+		self.goButtonElem.click();
+		self.resetSearchFields();
+		expect(self.searchCriteria3Elem.getText()).toBe('');
+		
+	}
+	
 	
 	/*this.selectQuickSearchResult = function(index){
 		self.quickSearchResultsElem.get(index).click();

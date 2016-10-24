@@ -49,5 +49,8 @@ describe('Verify Patient Search functionalities',function(){
 		basePage.clearField(patientSearchScreen.quickSearchElem);
 		
 	})
+	it('should verify functionality of reset link button',function(){
+		patientSearchScreen.resetLinkFunctionality();
+	})
 	
 })

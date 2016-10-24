@@ -29,9 +29,10 @@ var constants = function() {
 	//PATIENT HUB SCREEN Constants
 	this.patientInfoLabels = [ 'MRN:','DOB:','AGE:','SEX:','ADDRESS:','CELL:','EMAIL:','ATTENDING PROVIDER:','SECONDARY PROVIDER:', 
 	                           'PATIENT TYPE 1:','PATIENT TYPE 2:','REFERRING PROVIDER:','PCP PROVIDER:','PHARMACY:' ];
-	this.patientHubLabResultsLabels = ['Labs','Tel Enc','DI','Web Enc','Referrals','Documents','Actions','P2P'];
-	this.patientHubApptDetails = ['Last Appointment:','Next Appointment:','Bumped Appointments:','Facility:','Facility:','Case Manager HX:'];
-	this.patientHubRightTabsLabels = ['APPOINTMENTS','ENCOUNTER','EMR','RX','ACCOUNT','ORDERS','DOCUMENTS'];
+	//this.patientHubLabResultsLabels = ['Labs','Tel Enc','DI','Web Enc','Referrals','Documents','Actions','P2P'];
+	//this.patientHubApptDetails = [ 'Last Appointment:', 'Patient Last appt', 'Next Appointment:', 'Patient Next appt', 'Bumped Appointments:', 
+	  //                             'Patient Bumped Appts','Facility:', 'Facility Name', 'Facility:', 'Facility Name', 'Case Manager HX:', 'Case Manager' ];
+	this.patientHubRightTabsLabels = ['APPOINTMENTS', 'ENCOUNTER', 'EMR', 'RX', 'ACCOUNT', 'ORDERS', 'DOCUMENTS' ];
 	
 	
 	

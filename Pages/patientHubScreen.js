@@ -11,7 +11,7 @@ this.patientInfoLabelElem = element.all(by.xpath("(//section[@class='col-md-12 p
 this.patientBalanceInfoElem = element.all(by.xpath("(//div[@class='patientHubLeft']//section[@class='col-md-12 color-section'])[1]//span"));
 this.patientHubLabResultsLabelsElem = element.all(by.xpath("//div[@class='patientHubLeft']//div[@class='col-md-5 pt-hub-lab-results']//label"));
 this.patientHubApptDetailsElem = element.all(by.xpath("(//div[@class='patientHubLeft']//div[@class='col-md-12'])[3]//span"));
-this.patientHubRightTabs = element.all(by.xpath("//div[@class='patientHubRight']//ul[@class='nav nav-tabs']/li"));
+this.patientHubRightTabsElem = element.all(by.xpath("//div[@class='patientHubRight']//ul[@class='nav nav-tabs']/li"));
 
 var self=this;
 
@@ -31,6 +31,28 @@ this.validatePatientNameAndMRN = function(){
 
 this.validateAllItemsInPatientHub = function(){
 	expect(self.patientInfoLabelElem.getText()).toEqual(constants.patientInfoLabels);
+	expect(basePage.countNumberOfElements(self.patientInfoLabelElem)).toBe(14);
+	expect(self.patientBalanceInfoElem.getText()).toContain('Patient Balance:');
+	expect(self.patientBalanceInfoElem.getText()).toContain('Account Balance:');
+	expect(self.patientBalanceInfoElem.getText()).toContain('Coll. Balance:');
+	expect(self.patientBalanceInfoElem.getText()).toContain('Collection Status:');
+	expect(self.patientBalanceInfoElem.getText()).toContain('Assigned to:');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('LABS');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('TEL ENC');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('DI');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('WEB ENC');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('REFERRALS');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('DOCUMENTS');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('ACTIONS');
+	expect(self.patientHubLabResultsLabelsElem.getText()).toContain('P2P');
+	expect(self.patientHubApptDetailsElem.getText()).toContain('Last Appointment:');
+	expect(self.patientHubApptDetailsElem.getText()).toContain('Next Appointment:');
+	expect(self.patientHubApptDetailsElem.getText()).toContain('Bumped Appointments:');
+	expect(self.patientHubApptDetailsElem.getText()).toContain('Facility:');
+	expect(self.patientHubApptDetailsElem.getText()).toContain('Facility:');
+	expect(self.patientHubApptDetailsElem.getText()).toContain('Case Manager HX:');
+	expect(self.patientHubRightTabsElem.getText()).toEqual(constants.patientHubRightTabsLabels);
+	expect(basePage.countNumberOfElements(self.patientHubRightTabsElem)).toBe(7);	
 }
 
 this.navigateToPatientDetails = function(){

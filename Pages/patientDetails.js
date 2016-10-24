@@ -8,3 +8,10 @@ this.patientDetailsAccordionsHeadersElem = element.all(by.xpath("//div//h4[@clas
 this.patientImgInDemographicsElem = element(by.xpath("//div/img"));
 this.demographicsEditButtonElem = element(by.xpath("//div/button[@id='editDemographics']"));
 this.demographicsFieldsElem = element(by.xpath("(//div[@class='col-md-12']//div)[2]"));
+
+var self = this;
+
+this.validateAllElementsOfDemographicsAccordion = function(){
+	expect(self.patientImgInDemographicsElem).toBeDefined();
+	expect(self.demographicsEditButtonElem).toBeDefined();
+}

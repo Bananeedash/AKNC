@@ -20,8 +20,8 @@ exports.config = {
     useAllAngular2AppRoots: true,
     // Spec patterns are relative to the current working directory when
     // protractor is called.
-    specs: ['./Specs/*.js'],
-    //specs: ['./Specs/patientHubValidations.js'],
+    //specs: ['./Specs/*.js'],
+    specs: ['./Specs/patientSearch.js'],
     
     //restartBrowserBetweenTests: true,
 
