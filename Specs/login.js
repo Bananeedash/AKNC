@@ -7,25 +7,21 @@ var environment = require('../Environment.json');
 var envt = environment.env;
 var userName = (envt == 'dev' ? environment.dev.AKNCusername : (envt == 'qa' ? environment.qa.AKNCusername : environment.staging.AKNCusername));
 var password = (envt == 'dev' ? environment.dev.password : (envt == 'qa' ? environment.qa.password : environment.staging.password));
-describe('AKNC EMR',function () {
-    
-    //LoginPage = new LoginPage();
 
-	beforeEach(function () {
-    	browser.ignoreSynchronization = true;
-        LoginPage.getEMR();
-    })
+describe('AKNC EMR',function () {
+
+    browser.ignoreSynchronization = true;
+    LoginPage.getEMR();
     
-    afterEach(function() {
-    	browser.refresh();
-    })
-    
+   
     it('should not allow login with invalid username',function () {
     	
         LoginPage.login('xyz',password);
         //expect(LoginPage.loginErrorElem).toBeDefined();
         var result = basePage.isVisible(LoginPage.loginErrorElem);
         expect(result).toBeTruthy();
+        LoginPage.clearCredentials();
+        
     })
     it('should not allow login with invalid password',function () {
 
@@ -33,6 +29,7 @@ describe('AKNC EMR',function () {
         var errorMessage = LoginPage.loginErrorElem.getText();
         //expect(LoginPage.loginErrorElem).toBeDefined();
         expect(errorMessage).toMatch('Invalid login attempt.');
+        LoginPage.clearCredentials();
 
     })
     it('should login successfully',function () {

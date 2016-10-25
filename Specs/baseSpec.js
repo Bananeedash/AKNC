@@ -11,7 +11,7 @@ var baseSpec = function() {
 			browser.ignoreSynchronization = true;
 			loginPage.getEMR();
 			loginPage.login(userName,password);
-			//browser.ignoreSynchronization = false;
+			browser.ignoreSynchronization = false;
 		});
 		
 		afterAll(function() {

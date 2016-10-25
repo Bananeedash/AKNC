@@ -3,6 +3,7 @@
  */
 
 var environment = require('../Environment.json');
+var basePage = require('../Pages/basePage.js');
 var envt = environment.env;
 var baseURL = (envt == 'dev' ? environment.dev.AKNCUrl : (envt == 'qa' ? environment.qa.AKNCUrl : environment.staging.AKNCUrl));
 //var userName = (envt == 'dev' ? environment.dev.AKNCusername : environment.staging.AKNCusername);
@@ -15,6 +16,8 @@ var loginPage = function () {
     this.headerLogoElem = element(by.xpath("//app//div/a[@class='logo']"));
     this.loginErrorElem = element(by.id('validationError'));
     
+    var self = this;
+    
     //Load AKNC EMR Application
     this.getEMR = function () {
         browser.get(baseURL);
@@ -22,9 +25,14 @@ var loginPage = function () {
     
     //Login to AKNC EMR application with username and password
     this.login = function (username,password) {
-        this.userNameElem.sendKeys(username);
-        this.passwordElem.sendKeys(password);
-        this.loginButtonElem.click();
+        self.userNameElem.sendKeys(username);
+        self.passwordElem.sendKeys(password);
+        self.loginButtonElem.click();
+    }
+    
+    this.clearCredentials = function(){
+    	basePage.clearField(self.userNameElem);
+    	basePage.clearField(self.passwordElem);
     }
     
 

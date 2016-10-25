@@ -21,6 +21,7 @@ exports.config = {
     // Spec patterns are relative to the current working directory when
     // protractor is called.
     specs: ['./Specs/*.js'],
+    exclude: ['./Specs/baseSpec.js'],
     //specs: ['./Specs/patientSearch.js'],
     
     //restartBrowserBetweenTests: true,

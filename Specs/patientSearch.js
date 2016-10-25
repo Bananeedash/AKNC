@@ -50,6 +50,7 @@ describe('Verify Patient Search functionalities',function(){
 		
 	})
 	it('should verify functionality of reset link button',function(){
+		welcomePage.navigateToPatientModule();
 		patientSearchScreen.resetLinkFunctionality();
 	})
 	
