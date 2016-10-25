@@ -34,6 +34,17 @@ var constants = function() {
 	  //                             'Patient Bumped Appts','Facility:', 'Facility Name', 'Facility:', 'Facility Name', 'Case Manager HX:', 'Case Manager' ];
 	this.patientHubRightTabsLabels = ['APPOINTMENTS', 'ENCOUNTER', 'EMR', 'RX', 'ACCOUNT', 'ORDERS', 'DOCUMENTS' ];
 	
+	//Demographics Constants
+	
+	this.stateAlphabeticalList = ['ALABAMA', 'ALASKA', 'AMERICAN SAMOA', 'ARIZONA', 'ARKANSAS', 'CALIFORNIA', 'COLORADO', 'CONNECTICUT',
+	                              'DELAWARE', 'DISTRICT OF COLUMBIA', 'FEDERATED STATES OF MICRONESIA', 'FLORIDA', 'GEORGIA', 'GUAM', 'HAWAII', 'IDAHO', 
+	                              'ILLINOIS', 'INDIANA', 'IOWA', 'KANSAS', 'KENTUCKY', 'LOUISIANA', 'MAINE', 'MARSHALL ISLANDS', 'MARYLAND',
+	                              'MASSACHUSETTS', 'MICHIGAN', 'MINNESOTA', 'MISSISSIPPI', 'MISSOURI', 'MONTANA', 'NEBRASKA', 'NEVADA', 'NEW HAMPSHIRE',
+	                              'NEW JERSEY', 'NEW MEXICO', 'NEW YORK', 'NORTH CAROLINA', 'NORTH DAKOTA', 'NORTHERN MARIANA ISLANDS', 'OHIO',
+	                              'OKLAHOMA', 'OREGON', 'PALAU', 'PENNSYLVANIA', 'PUERTO RICO', 'RHODE ISLAND', 'SOUTH CAROLINA', 'SOUTH DAKOTA',
+	                              'TENNESSEE', 'UTAH', 'VERMONT', 'VIRGIN ISLANDS', 'VIRGINIA', 'WASHINGTON', 'WEST VIRGINIA', 'WISCONSIN',
+	                              'WYOMING', 'TEXAS'];
+	
 	
 	
 	

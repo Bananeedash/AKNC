@@ -16,7 +16,8 @@ describe('Verify patient hub details',function(){
 	it('should validate all items in patient hub',function(){
 		patientHubScreen.validateAllItemsInPatientHub();
 	})
-	xit('should click on Patient details link and navigate to patient details screen',function(){
+	it('should click on Patient details link and navigate to patient details screen',function(){
 		patientHubScreen.navigateToPatientDetails();
 	})
+	
 })

@@ -16,6 +16,9 @@ describe('Verify Patient Search functionalities',function(){
 	it('should verify the Search Fields dropdown options',function(){
 		patientSearchScreen.validateDrowpdownOptions();
 	})
+	it('should verify that on clicking GO all results are populated',function(){
+		patientSearchScreen.validateGOButtonWithoutSearchCriteria();
+	})
 	it('should search with DOB search criteria',function(){
 		patientSearchScreen.searchWithDOB();
 		patientSearchScreen.resetSearchFields();
@@ -28,7 +31,9 @@ describe('Verify Patient Search functionalities',function(){
 		patientSearchScreen.searchWithMRN();
 		patientSearchScreen.resetSearchFields();
 	})
+	
 	it('should verify dropdown options of Advanced Search fields',function(){
+		
 		patientSearchScreen.enableAdvancedSearch();
 		patientSearchScreen.validateDefaultAdvSrchDropdownOptions();
 		patientSearchScreen.disableAdvancedSearch();
@@ -38,7 +43,7 @@ describe('Verify Patient Search functionalities',function(){
 		patientSearchScreen.selectOptionInDrdAndVerifyRestDrds(patientSearchScreen.drpdwn2Elem,patientSearchScreen.drpdwn2OptionsElem,2,2);
 		patientSearchScreen.disableAdvancedSearch();
 	})
-	it('should search using quick search bar',function(){
+	xit('should search using quick search bar',function(){
 		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType1,constants.quickSearchFNInput,2);
 		basePage.clearField(patientSearchScreen.quickSearchElem);
 		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType2,constants.quickSearchLNInput,1);
@@ -53,5 +58,10 @@ describe('Verify Patient Search functionalities',function(){
 		welcomePage.navigateToPatientModule();
 		patientSearchScreen.resetLinkFunctionality();
 	})
+	it('should verify that clicking on search results once navigates to patient details',function(){
+		patientSearchScreen.searchWithMRN();
+		patientSearchScreen.clickOnSearchresultNavToPatientHub(0);
+	})
+	
 	
 })

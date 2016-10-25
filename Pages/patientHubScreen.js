@@ -4,7 +4,7 @@ var constants = require('../constants.js');
 this.nameheaderCloseElem = element.all("//div[@class='title-div']//span[@class='name-header']/i");
 this.nameHeaderInPatientHubElem = element(by.className('name-header'));
 this.patientImgElem = element(by.xpath("//div[@class='patientHubLeft']//img[@id='img']"));
-this.patientDetailsLinkElem = element(by.xpath("//div[@class='patientHubLeft']//div[@class='pt-hub-details-link']"));
+this.patientDetailsLinkElem = element(by.xpath("//div//div[@class='pt-hub-details-link']"));
 this.patientHubNameElem = element(by.xpath("(//section[@class='col-md-12 pt-hub-main-details']//div[@class='col-md-10']/div)[1]"));
 this.patientInfoElem = element.all(by.xpath("(//section[@class='col-md-12 pt-hub-main-details']//div[@class='col-md-6'])//div"));
 this.patientInfoLabelElem = element.all(by.xpath("(//section[@class='col-md-12 pt-hub-main-details']//div[@class='col-md-6'])//label"));
@@ -56,6 +56,6 @@ this.validateAllItemsInPatientHub = function(){
 }
 
 this.navigateToPatientDetails = function(){
-	self.patientDetailsLinkElem.click();
+	this.patientDetailsLinkElem.click();
 	expect(basePage.checkURL('details'));
 }

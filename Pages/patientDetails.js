@@ -8,10 +8,21 @@ this.patientDetailsAccordionsHeadersElem = element.all(by.xpath("//div//h4[@clas
 this.patientImgInDemographicsElem = element(by.xpath("//div/img"));
 this.demographicsEditButtonElem = element(by.xpath("//div/button[@id='editDemographics']"));
 this.demographicsFieldsElem = element(by.xpath("(//div[@class='col-md-12']//div)[2]"));
+this.stateElem = element(by.xpath("(//div[@id='demographicsContainer']//select)[7]"));
+this.stateSelectListElem = element.all(by.xpath("(//div[@id='demographicsContainer']//select)[7]/option"));
 
 var self = this;
 
 this.validateAllElementsOfDemographicsAccordion = function(){
 	expect(self.patientImgInDemographicsElem).toBeDefined();
 	expect(self.demographicsEditButtonElem).toBeDefined();
+}
+
+this.validateAlphaOrderStateList = function(){
+	var i;
+	var count = basePage.countNumberOfElements(self.stateSelectListElem);
+	self.stateSelectListElem.get(1).getText().then(function(text){
+		console.log(text);
+	})
+	
 }

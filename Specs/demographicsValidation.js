@@ -13,6 +13,9 @@ describe('Demographics accordion',function(){
 		patientSearchScreen.searchWithDOB();
 		patientSearchScreen.searchGridColumElem.get(1).click();
 		patientHubScreen.navigateToPatientDetails();
-		patientDetails.validateAllElementsOfDemographicsAccordion();
+    	patientDetails.validateAllElementsOfDemographicsAccordion();
+	})
+	xit('should verify the order of state options list',function(){
+		patientDetails.validateAlphaOrderStateList();
 	})
 })

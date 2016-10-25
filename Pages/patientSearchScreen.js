@@ -51,6 +51,7 @@ var patientSearchScreen = function() {
 			expect(drd3Text).toEqual(constants.searchDefault3);
 		})
 	}
+	
 	this.validateDrowpdownOptions = function(){
 		expect(self.drpdwn1OptionsElem.getText()).toContain(constants.searchDefault1);
 		expect(self.drpdwn1OptionsElem.getText()).not.toContain(constants.searchDefault2);
@@ -61,6 +62,11 @@ var patientSearchScreen = function() {
 		expect(self.drpdwn3OptionsElem.getText()).toContain(constants.searchDefault3);
 		expect(self.drpdwn3OptionsElem.getText()).not.toContain(constants.searchDefault1);
 		expect(self.drpdwn3OptionsElem.getText()).not.toContain(constants.searchDefault2);
+	}
+	
+	this.validateGOButtonWithoutSearchCriteria = function(){
+		this.goButtonElem.click();
+		expect(this.searchGridRowsElem.count()).toEqual(20);
 	}
 	
 	this.searchWithDOB = function(){
@@ -81,6 +87,12 @@ var patientSearchScreen = function() {
 		expect(self.searchGridColumElem.get(2).getText()).toEqual(constants.MRNInput);
 		expect(self.searchGridRowsElem.count()).toBe(1);
 	}
+	
+	this.clickOnSearchresultNavToPatientHub = function(index){
+		this.searchGridRowsElem.get(0).click();
+		expect(patientHubScreen.patientImgElem).toBeDefined();
+	}
+	
 	this.resetSearchFields = function(){
 		self.resetLinkElem.click();
 	}
