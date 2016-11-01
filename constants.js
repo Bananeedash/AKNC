@@ -15,6 +15,11 @@ var constants = function() {
 	this.searchDefault3 = 'MRN / CHART #';
 	this.DOBInput = '04/06/2016';
 	this.patientDOB = '04/06/16';
+	this.emailInput = 'bananee.dash@mindfiresolutions.com';
+	this.FNInput = 'JOHN';
+	this.genderInput = 'FEMALE';
+	this.MSInput = 'DIVORCED';
+	this.MNInput = 'JUAN';
 	this.LNInput = 'FISHER';
 	this.MRNInput = '1011024';
 	this.quickSearchInputType1 = 'FN';
@@ -36,14 +41,14 @@ var constants = function() {
 	
 	//Demographics Constants
 	
-	this.stateAlphabeticalList = ['ALABAMA', 'ALASKA', 'AMERICAN SAMOA', 'ARIZONA', 'ARKANSAS', 'CALIFORNIA', 'COLORADO', 'CONNECTICUT',
+	this.stateAlphabeticalList = ['-- SELECT --', 'ALABAMA', 'ALASKA', 'AMERICAN SAMOA', 'ARIZONA', 'ARKANSAS', 'CALIFORNIA', 'COLORADO', 'CONNECTICUT',
 	                              'DELAWARE', 'DISTRICT OF COLUMBIA', 'FEDERATED STATES OF MICRONESIA', 'FLORIDA', 'GEORGIA', 'GUAM', 'HAWAII', 'IDAHO', 
 	                              'ILLINOIS', 'INDIANA', 'IOWA', 'KANSAS', 'KENTUCKY', 'LOUISIANA', 'MAINE', 'MARSHALL ISLANDS', 'MARYLAND',
 	                              'MASSACHUSETTS', 'MICHIGAN', 'MINNESOTA', 'MISSISSIPPI', 'MISSOURI', 'MONTANA', 'NEBRASKA', 'NEVADA', 'NEW HAMPSHIRE',
 	                              'NEW JERSEY', 'NEW MEXICO', 'NEW YORK', 'NORTH CAROLINA', 'NORTH DAKOTA', 'NORTHERN MARIANA ISLANDS', 'OHIO',
 	                              'OKLAHOMA', 'OREGON', 'PALAU', 'PENNSYLVANIA', 'PUERTO RICO', 'RHODE ISLAND', 'SOUTH CAROLINA', 'SOUTH DAKOTA',
-	                              'TENNESSEE', 'UTAH', 'VERMONT', 'VIRGIN ISLANDS', 'VIRGINIA', 'WASHINGTON', 'WEST VIRGINIA', 'WISCONSIN',
-	                              'WYOMING', 'TEXAS'];
+	                              'TENNESSEE', 'TEXAS', 'UTAH', 'VERMONT', 'VIRGIN ISLANDS', 'VIRGINIA', 'WASHINGTON', 'WEST VIRGINIA', 'WISCONSIN',
+	                              'WYOMING' ];
 	
 	
 	

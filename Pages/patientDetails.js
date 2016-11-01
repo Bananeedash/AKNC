@@ -19,10 +19,14 @@ this.validateAllElementsOfDemographicsAccordion = function(){
 }
 
 this.validateAlphaOrderStateList = function(){
-	var i;
+	var i=0;
 	var count = basePage.countNumberOfElements(self.stateSelectListElem);
-	self.stateSelectListElem.get(1).getText().then(function(text){
-		console.log(text);
+	self.stateSelectListElem.each(function(element,index){
+		element.getText().then(function(text) {
+			expect(text).toContain(constants.stateAlphabeticalList[i]);
+			i++;
+		})
+		
 	})
 	
 }

@@ -10,7 +10,7 @@ describe('Verify patient hub details',function(){
 	it('should validate patient name',function(){
 		welcomePage.navigateToPatientModule();
 		patientSearchScreen.searchWithDOB();
-		patientSearchScreen.searchGridColumElem.get(1).click();
+		patientSearchScreen.searchGridRowsElem.get(1).click();
 		patientHubScreen.validatePatientNameAndMRN();
 	})
 	it('should validate all items in patient hub',function(){

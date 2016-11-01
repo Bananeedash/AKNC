@@ -9,6 +9,7 @@ var patientSearchScreen = function() {
 	this.resetLinkElem = element(by.buttonText('Reset'));
 	this.quickSearchElem = element(by.xpath("//div[@class='title-div']//input"));
 	this.quickSearchResultsElem = element.all(by.xpath("//div[@class='title-div']//li"));
+	this.drddwnElems = element.all(by.xpath("//div[@class='field-section']//select"));
 	this.drpdwn1Elem = element(by.id('drd1'));
 	this.drpdwn1OptionsElem = element.all(by.xpath("//select[@id='drd1']/option"));
 	this.drpdwn2Elem = element(by.id('drd2'));
@@ -26,6 +27,8 @@ var patientSearchScreen = function() {
 	this.searchCriteria3Elem = element(by.xpath("(//div[@class='field-section']//span/input)[3]"));
 	this.searchGridColumElem = element.all(by.xpath("(//div[@id='PatientSearchGrid']/div)[2]//td"));
 	this.searchGridRowsElem = element.all(by.xpath("//div[@id='PatientSearchGrid']//tbody/tr"));
+	this.inputDrdOptions = element.all(by.xpath("//div[@class='field-section']//span/select[@class='searchTextbox ng-untouched ng-pristine ng-valid']/option"));
+	
 	
 	var self = this;
 	this.checkAllItemsInPtsScrn = function() {
@@ -64,8 +67,12 @@ var patientSearchScreen = function() {
 		expect(self.drpdwn3OptionsElem.getText()).not.toContain(constants.searchDefault2);
 	}
 	
+	this.clickGo = function(){
+		self.goButtonElem.click();
+	}
+	
 	this.validateGOButtonWithoutSearchCriteria = function(){
-		this.goButtonElem.click();
+		this.clickGo();
 		expect(this.searchGridRowsElem.count()).toEqual(20);
 	}
 	
@@ -102,10 +109,16 @@ var patientSearchScreen = function() {
 	this.disableAdvancedSearch = function(){
 		self.advSearchElem.click();
 	}
-	this.selectOptionInDropdown1 = function (){
-		
+	this.searchWithAdvSearchDrd = function (){
+		self.enableAdvancedSearch();
+		self.inputCriteriaToSearchFields(4,constants.searchFieldDropdownValues[6]);
+		self.clickGo();
+		expect(self.searchGridRowsElem.count()).not.toBe(0);
+		self.resetSearchFields();
+		self.disableAdvancedSearch();
 	}
 	this.validateDefaultAdvSrchDropdownOptions = function(){
+		self.enableAdvancedSearch();
 		expect(self.drpdwn4OptionsElem.getText()).not.toContain(constants.searchDefault1);
 		expect(self.drpdwn4OptionsElem.getText()).not.toContain(constants.searchDefault2);
 		expect(self.drpdwn4OptionsElem.getText()).not.toContain(constants.searchDefault3);
@@ -115,25 +128,81 @@ var patientSearchScreen = function() {
 		expect(self.drpdwn6OptionsElem.getText()).not.toContain(constants.searchDefault1);
 		expect(self.drpdwn6OptionsElem.getText()).not.toContain(constants.searchDefault2);
 		expect(self.drpdwn6OptionsElem.getText()).not.toContain(constants.searchDefault3);
+		self.disableAdvancedSearch();
+	}
+	this.selectOptionInDrd = function(dropdownElem,dropdownOptionsElem,index){
+		dropdownElem.click().then(function(){
+			dropdownOptionsElem.get(index).click();
+		})
+	}
+	this.inputCriteriaToSearchFields = function(drdNo,option){
+		var i = drdNo;
+		this.drd = element(by.id("drd"+i));
+		this.drdOption = element.all(by.xpath("//select[@id='drd"+i+"']/option"));
+		this.searchInputElem = element(by.xpath("(//div[@class='field-section']/div)["+i+"]//input"));
+		self.drdOption.each(function(element,index){
+			element.getText().then(function(text) {
+				if(option==text){
+					element.click();
+				}
+			})
+		})
+		if(option==constants.searchFieldDropdownValues[0]){
+			self.searchInputElem.sendKeys(constants.DOBInput);
+		}
+		else if(option==constants.searchFieldDropdownValues[1]){
+			self.searchInputElem.sendKeys(constants.emailInput);
+		}
+		else if(option==constants.searchFieldDropdownValues[2]){
+			self.searchInputElem.sendKeys(constants.FNInput);
+		}
+		else if(option==constants.searchFieldDropdownValues[3]){
+			self.inputDrdOptions.each(function(element,index){
+				element.getText().then(function(text) {
+					if(text==constants.genderInput){
+						element.click();
+					}
+				})
+			})					
+		}
+		else if(option==constants.searchFieldDropdownValues[4]){
+			self.searchInputElem.sendKeys(constants.LNInput);
+		}
+		else if(option==constants.searchFieldDropdownValues[5]){
+			self.inputDrdOptions.each(function(element,index){
+				element.getText().then(function(text) {
+					if(text==constants.MSInput){
+						element.click();
+					}
+				})
+			})
+		}
+		else if(option==constants.searchFieldDropdownValues[6]){
+			self.searchInputElem.sendKeys(constants.MNInput);
+		}
+		else if(option==constants.searchFieldDropdownValues[7]){
+			self.searchInputElem.sendKeys(constants.MRNInput);
+		}
+		browser.sleep(3000);
 		
 	}
 	this.selectOptionInDrdAndVerifyRestDrds = function(dropdownElem,dropdownOptionsElem,dropdownNumber,index){
-		dropdownElem.click().then(function(){
-			dropdownOptionsElem.get(index).click();
-			dropdownOptionsElem.get(index).getText().then(function(option){
-				for(var i=1;i<=6;i++){
-					var drd = element(by.id('drd"+i+"'));
-					var drdOption = element.all(by.xpath("//select[@id='drd"+i+"']/option"));
-					if(i!=dropdownNumber){
-						expect(drdOption.getText()).not.toContain(option);
-					}
-					
+		self.enableAdvancedSearch();
+		self.selectOptionInDrd(dropdownElem,dropdownOptionsElem,index);
+		dropdownOptionsElem.get(index).getText().then(function(option){
+			for(var i=1;i<=6;i++){
+				var drd = element(by.id('drd'+i));
+				var drdOption = element.all(by.xpath("//select[@id='drd"+i+"']/option"));
+				if(i!=dropdownNumber){
+					expect(drdOption.getText()).not.toContain(option);
 				}
+					
+			}
 				
-			})
-			
 		})
+		self.disableAdvancedSearch();
 	}
+	
 	this.searchWithQuickSearch = function(inputType,input,searchResultIndex){
 		self.quickSearchElem.sendKeys(input);
 		if(inputType==constants.quickSearchInputType1){

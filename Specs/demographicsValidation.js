@@ -11,11 +11,11 @@ describe('Demographics accordion',function(){
 	it('should have all items',function(){
 		welcomePage.navigateToPatientModule();
 		patientSearchScreen.searchWithDOB();
-		patientSearchScreen.searchGridColumElem.get(1).click();
+		patientSearchScreen.searchGridRowsElem.get(1).click();
 		patientHubScreen.navigateToPatientDetails();
     	patientDetails.validateAllElementsOfDemographicsAccordion();
 	})
-	xit('should verify the order of state options list',function(){
+	it('should verify the order of state options list',function(){
 		patientDetails.validateAlphaOrderStateList();
 	})
 })

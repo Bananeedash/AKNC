@@ -23,7 +23,7 @@ describe('Verify Patient Search functionalities',function(){
 		patientSearchScreen.searchWithDOB();
 		patientSearchScreen.resetSearchFields();
 	})
-	it('should search with Last Name search criteria',function(){
+	xit('should search with Last Name search criteria',function(){
 		patientSearchScreen.searchWithLN();
 		patientSearchScreen.resetSearchFields();
 	})
@@ -33,17 +33,17 @@ describe('Verify Patient Search functionalities',function(){
 	})
 	
 	it('should verify dropdown options of Advanced Search fields',function(){
-		
-		patientSearchScreen.enableAdvancedSearch();
-		patientSearchScreen.validateDefaultAdvSrchDropdownOptions();
-		patientSearchScreen.disableAdvancedSearch();
+		patientSearchScreen.validateDefaultAdvSrchDropdownOptions();		
 	})
 	it('should select an option in a dropdown and verify rest dropdowns',function(){
-		patientSearchScreen.enableAdvancedSearch();
-		patientSearchScreen.selectOptionInDrdAndVerifyRestDrds(patientSearchScreen.drpdwn2Elem,patientSearchScreen.drpdwn2OptionsElem,2,2);
-		patientSearchScreen.disableAdvancedSearch();
+		
+		patientSearchScreen.selectOptionInDrdAndVerifyRestDrds(patientSearchScreen.drpdwn5Elem,patientSearchScreen.drpdwn5OptionsElem,5,5);
+		
 	})
-	xit('should search using quick search bar',function(){
+	it('should search with advanced search options',function(){
+		patientSearchScreen.searchWithAdvSearchDrd();
+	})
+	it('should search using quick search bar',function(){
 		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType1,constants.quickSearchFNInput,2);
 		basePage.clearField(patientSearchScreen.quickSearchElem);
 		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType2,constants.quickSearchLNInput,1);
