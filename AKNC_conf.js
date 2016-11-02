@@ -23,7 +23,7 @@ exports.config = {
     specs: ['./Specs/*.js'],
     exclude: ['./Specs/baseSpec.js'],
     //specs: ['./Specs/login.js','./Specs/welcomeScreenValidation.js','./Specs/patientSearch.js'],
-    //specs: ['Specs/demographicsValidation.js'],
+    //specs: ['Specs/login.js'],
     
     
     //restartBrowserBetweenTests: true,

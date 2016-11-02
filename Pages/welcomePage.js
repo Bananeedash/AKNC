@@ -8,7 +8,7 @@ var welcomePage = function () {
 	this.homeIconElem = element(by.className('home-icon'));
 	//this.closeButtonElem = element(by.xpath("//div[@class='top-bar']/a[@class='close']")); not used anymore
     this.welcomeUserElem = element(by.xpath("//p[@class='cl-name']"));
-    this.AKNCLogoElem = element(by.xpath("//a[@class='logo']"));
+    this.AKNCLogoElem = element(by.xpath("//div[@class='main-area']//img"));
     this.dateInfoElem = element(by.xpath("//p[@class='date-info']"));
     this.dateElem = element(by.xpath("//span[@id='TodayDate']"));
     this.welcomeMsgElem = element(by.xpath("//div[@class='welcome-home']/h1"));

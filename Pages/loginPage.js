@@ -13,7 +13,7 @@ var loginPage = function () {
     this.userNameElem = element(by.id('UserName'));
     this.passwordElem = element(by.id('Password'));
     this.loginButtonElem = element(by.buttonText('Login'));
-    this.headerLogoElem = element(by.xpath("//app//div/a[@class='logo']"));
+    //this.headerLogoElem = element(by.xpath("//app//div/a[@class='logo']"));
     this.loginErrorElem = element(by.id('validationError'));
     
     var self = this;
