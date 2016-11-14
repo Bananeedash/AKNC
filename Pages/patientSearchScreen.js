@@ -26,6 +26,7 @@ var patientSearchScreen = function() {
 	this.searchCriteria2Elem = element(by.xpath("(//div[@class='field-section']//span/input)[2]"));
 	this.searchCriteria3Elem = element(by.xpath("(//div[@class='field-section']//span/input)[3]"));
 	this.searchGridColumElem = element.all(by.xpath("(//div[@id='PatientSearchGrid']/div)[2]//td"));
+	this.searchGridHeaderElem = element.all(by.xpath("//div[@id='PatientSearchGrid']/div//th"));
 	this.searchGridRowsElem = element.all(by.xpath("//div[@id='PatientSearchGrid']//tbody/tr"));
 	this.inputDrdOptions = element.all(by.xpath("//div[@class='field-section']//span/select[@class='searchTextbox ng-untouched ng-pristine ng-valid']/option"));
 	
@@ -36,8 +37,17 @@ var patientSearchScreen = function() {
 		expect(self.advSearchElem).toBeDefined();
 		expect(self.resetLinkElem).toBeDefined();
 		expect(self.drpdwn1Elem).toBeDefined();
-		
-		
+	}
+	
+	this.verifyOrderOfDrdOptionsList = function(){
+		self.enableAdvancedSearch();
+		basePage.sortAndCompareList(self.drpdwn1OptionsElem);
+		basePage.sortAndCompareList(self.drpdwn2OptionsElem);
+		basePage.sortAndCompareList(self.drpdwn3OptionsElem);
+		basePage.sortAndCompareList(self.drpdwn4OptionsElem);
+		basePage.sortAndCompareList(self.drpdwn5OptionsElem);
+		basePage.sortAndCompareList(self.drpdwn6OptionsElem);
+		self.disableAdvancedSearch();
 	}
 	this.validateDefaultOptionsAndCursorDefault = function(){
 		expect(self.searchCriteria1Elem.equals(browser.switchTo().activeElement())).toBe(true);
@@ -68,7 +78,7 @@ var patientSearchScreen = function() {
 	}
 	
 	this.clickGo = function(){
-		self.goButtonElem.click();
+		this.goButtonElem.click();
 	}
 	
 	this.validateGOButtonWithoutSearchCriteria = function(){
@@ -111,7 +121,7 @@ var patientSearchScreen = function() {
 	}
 	this.searchWithAdvSearchDrd = function (){
 		self.enableAdvancedSearch();
-		self.inputCriteriaToSearchFields(4,constants.searchFieldDropdownValues[6]);
+		self.inputCriteriaToSearchFields(4,constants.searchFieldDropdownValues[1]);
 		self.clickGo();
 		expect(self.searchGridRowsElem.count()).not.toBe(0);
 		self.resetSearchFields();
@@ -267,12 +277,57 @@ var patientSearchScreen = function() {
 		
 	}
 	
-	
-	/*this.selectQuickSearchResult = function(index){
-		self.quickSearchResultsElem.get(index).click();
-	}*/
-	
-	
+	this.validateSortingSearchResults = function(){
+		self.validateGOButtonWithoutSearchCriteria();
+		var ColumnElem = [];
+		this.searchGridHeaderElem.each(function(elem,index){			
+			if(index!=10){
+				if(index == 6){
+					index++;
+					elem.click();
+					self.searchGridRowsElem.each(function(elem,i){
+						var indexRows = i+1;
+						element(by.xpath("((//div[@id='PatientSearchGrid']//tbody/tr)["+indexRows+"])/td["+index+"]")).getText().then(function(text){
+							var date = new Date(text);
+							ColumnElem[i] = date;
+							//console.log(ColumnElem[i]);
+						})
+					})
+					browser.waitForAngular().then(function() {
+						basePage.sortAndCompareList(ColumnElem,'date');
+					})
+				}
+				else if(index == 7){
+					index++;
+					elem.click();
+					self.searchGridRowsElem.each(function(elem,i){
+						var indexRows = i+1;
+						element(by.xpath("((//div[@id='PatientSearchGrid']//tbody/tr)["+indexRows+"])/td["+index+"]")).getText().then(function(text){
+							ColumnElem[i] = text;
+							//console.log(ColumnElem[i]);
+						})
+					})
+					browser.waitForAngular().then(function() {
+						basePage.sortAndCompareList(ColumnElem,'age');
+					})
+				}
+				else{
+					index++;
+					elem.click();
+					self.searchGridRowsElem.each(function(elem,i){
+						var indexRows = i+1;
+						element(by.xpath("((//div[@id='PatientSearchGrid']//tbody/tr)["+indexRows+"])/td["+index+"]")).getText().then(function(text){
+							ColumnElem[i] = text;
+							//console.log(ColumnElem[i]);
+						})
+					})
+					browser.waitForAngular().then(function() {
+						basePage.sortAndCompareList(ColumnElem,'text');
+					})
+				}
+				
+			}				
+		})
+	}	
 }
-
-module.exports = new patientSearchScreen;
+module.exports = new patientSearchScreen();

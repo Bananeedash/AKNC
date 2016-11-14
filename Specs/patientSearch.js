@@ -13,6 +13,9 @@ describe('Verify Patient Search functionalities',function(){
 	it('should verify default options selected in Search field drop-downs and cursor defaul to DOB',function(){
 		patientSearchScreen.validateDefaultOptionsAndCursorDefault();
 	})
+	it('should verify order of drop-down options',function(){
+		patientSearchScreen.verifyOrderOfDrdOptionsList();
+	})
 	it('should verify the Search Fields dropdown options',function(){
 		patientSearchScreen.validateDrowpdownOptions();
 	})
@@ -23,7 +26,7 @@ describe('Verify Patient Search functionalities',function(){
 		patientSearchScreen.searchWithDOB();
 		patientSearchScreen.resetSearchFields();
 	})
-	xit('should search with Last Name search criteria',function(){
+	it('should search with Last Name search criteria',function(){
 		patientSearchScreen.searchWithLN();
 		patientSearchScreen.resetSearchFields();
 	})
@@ -61,6 +64,10 @@ describe('Verify Patient Search functionalities',function(){
 	it('should verify that clicking on search results once navigates to patient details',function(){
 		patientSearchScreen.searchWithMRN();
 		patientSearchScreen.clickOnSearchresultNavToPatientHub(0);
+	})
+	it('should verify sorting of search results',function(){
+		welcomePage.navigateToPatientModule();
+		patientSearchScreen.validateSortingSearchResults();
 	})
 	
 	

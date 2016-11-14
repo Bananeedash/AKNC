@@ -51,50 +51,50 @@ var welcomePage = function () {
         var format = 'MMMM DD, YYYY';
         var expectedDate = moment().format('dddd MMMM D, YYYY');
         var expectedDateMessage = 'Today is '+expectedDate+'.';
-        self.dateInfoElem.getText().then(function (dateinfo) {
+        this.dateInfoElem.getText().then(function (dateinfo) {
 			expect(dateinfo).toEqual(expectedDateMessage);
 		})
-        self.dateElem.getText().then(function (actualDate) {
+        this.dateElem.getText().then(function (actualDate) {
         	expect(basePage.compareDate(actualDate,format));
         })
-        expect(self.welcomeMsgElem.getText()).toEqual(constants.welcomeMessage);
-        expect(self.subMsgElem.getText()).toEqual(constants.msgBelowWelcomeMsg);
-        expect(self.mainNavLabelsElem.getText()).toEqual(constants.mainNavLabels);
+        expect(this.welcomeMsgElem.getText()).toEqual(constants.welcomeMessage);
+        expect(this.subMsgElem.getText()).toEqual(constants.msgBelowWelcomeMsg);
+        expect(this.mainNavLabelsElem.getText()).toEqual(constants.mainNavLabels);
         
     }
     this.clickOnClose = function () {
-		self.closeButtonElem.click();
+		this.closeButtonElem.click();
 	}    
     this.clickOnHomeIcon = function() {
-		self.homeIconElem.click();
+		this.homeIconElem.click();
 	}    
     this.navigateToPatientModule = function() {
-    	browser.ignoreSynchronization = false;
-		self.patientsElem.click();
+		this.patientsElem.click();
 	}
     this.navigateToEMRModule = function() {
-		self.EMRElem.click();
+		this.EMRElem.click();
 	}
     this.navigateToSchedulingModule = function() {
-		self.schedulingElem.click();
+		this.schedulingElem.click();
+		browser.ignoreSynchronization = true;
 	}
     this.navigateToBillingModule = function() {
-		self.billingElem.click();
+    	this.billingElem.click();
 	}
     this.navigateToInboxModule = function() {
-		self.inboxElem.click();
+    	this.inboxElem.click();
 	}
     this.navigateToWizardModule = function() {
-		self.wizardElem.click();
+    	this.wizardElem.click();
 	}
     this.navigateToPracticeMgmtModule = function() {
-		self.practiceMgmtElem.click();
+    	this.practiceMgmtElem.click();
 	}
     this.navigateToUsersModule = function() {
-		self.usersElem.click();
+    	this.usersElem.click();
 	}
     this.navigateToSettingsModule = function() {
-		self.settingsElem.click();
+    	this.settingsElem.click();
 	}
     
 

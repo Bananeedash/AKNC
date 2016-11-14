@@ -26,10 +26,9 @@ describe('Home Page',function () {
     	welcomePage.navigateToEMRModule();
     	basePage.checkURL('emr');
     })
-    xit('should navigate to Scheduling module and check URL',function(){
-    	welcomePage.navigateToSchedulingModule();
-    	basePage.checkURL('scheduler');
-    	
+    it('should navigate to Scheduling module and check URL',function(){
+    	welcomePage.navigateToSchedulingModule();    	
+    	basePage.checkURL('scheduler');	
     })
     it('should navigate to Billing module and check URL',function(){
     	welcomePage.navigateToBillingModule();
@@ -48,10 +47,11 @@ describe('Home Page',function () {
     })
     it('should navigate to Practice Management module and check URL',function(){
     	welcomePage.navigateToPracticeMgmtModule();
-    	basePage.checkURL('practicemanagement');
-//    	welcomePage.navigateToUsersModule)();
-//    	basePage.checkURL('users');
-    	
+    	basePage.checkURL('practicemanagement');    	
+    })
+    xit('should navigate to Users module and check URL',function(){
+    	welcomePage.navigateToUsersModule();
+    	basePage.checkURL('users');    	
     })
     it('should navigate to Settings module and check URL',function(){
     	welcomePage.navigateToSettingsModule();
