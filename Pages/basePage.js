@@ -59,6 +59,14 @@ var basePage = function() {
 			sorted.sort(date_sort_asc);
 			expect(sorted).toEqual(listElem);
 		}
+		else if(type=='number'){
+			var numberSort = function(n1,n2){
+				return(n1-n2);
+			}
+			sorted = listElem.slice();
+			sorted.sort(numberSort);
+			expect(sorted).toEqual(listElem);
+		}
 		else if(type=='age'){
 			sorted = listElem.slice();
 			var sortAge = function(age1, age2) {
@@ -114,6 +122,51 @@ var basePage = function() {
 		}
 		
 	}
-	
+	this.convertToMonth = function(number){
+		var month;
+		if(number===0)
+			month = 'JANUARY';
+		else if(number===1)
+			month = 'FEBRUARY';
+		else if(number===2)
+			month = 'MARCH';
+		else if(number===3)
+			month = 'APRIL';
+		else if(number===4)
+			month = 'MAY';
+		else if(number===5)
+			month = 'JUNE';
+		else if(number===6)
+			month = 'JULY';
+		else if(number===7)
+			month = 'AUGUST';
+		else if(number===8)
+			month = 'SEPTEMBER';
+		else if(number===9)
+			month = 'OCTOBER';
+		else if(number===10)
+			month = 'NOVEMBER';
+		else if(number===11)
+			month = 'DECEMBER';
+		return month;
+	}
+	this.convertToDay = function(number){
+		var day;
+		if(number===0)
+			day = 'SUNDAY';
+		else if(number===1)
+			day = 'MONDAY';
+		else if(number===2)
+			day = 'TUESDAY';
+		else if(number===3)
+			day = 'WEDNESDAY';
+		else if(number===4)
+			day = 'THURSDAY';
+		else if(number===5)
+			day = 'FRIDAY';
+		else if(number===6)
+			day = 'SATURDAY';
+		return day;
+	}
 }
 module.exports = new basePage();

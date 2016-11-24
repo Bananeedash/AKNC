@@ -53,7 +53,7 @@ describe('Verify Patient Search functionalities',function(){
 		basePage.clearField(patientSearchScreen.quickSearchElem);
 		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType3,constants.quickSearchMRNInput,0);
 		basePage.clearField(patientSearchScreen.quickSearchElem);
-		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType4,constants.quickSearchDOBInput,4);
+		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType4,constants.quickSearchDOBInput,0);
 		basePage.clearField(patientSearchScreen.quickSearchElem);
 		
 	})

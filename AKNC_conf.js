@@ -17,13 +17,12 @@ exports.config = {
     restartBrowserBetweenTests: false,
     // Framework to use. Jasmine is recommended.
     framework: 'jasmine',
-    useAllAngular2AppRoots: true,
     // Spec patterns are relative to the current working directory when
     // protractor is called.
     specs: ['./Specs/*.js'],
     exclude: ['./Specs/baseSpec.js'],
-    //specs: ['./Specs/login.js','./Specs/welcomeScreenValidation.js','./Specs/patientSearch.js'],
-    //specs: ['Specs/demographicsValidation.js'],
+    //specs: ['./Specs/patientHubValidations.js','./Specs/patientSearch.js','./Specs/demographicsValidation.js'],
+    //specs: ['Specs/schedulingDailyView.js'],
     
     allScriptsTimeout: 15000,
     //restartBrowserBetweenTests: true,

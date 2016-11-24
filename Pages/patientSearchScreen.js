@@ -282,7 +282,21 @@ var patientSearchScreen = function() {
 		var ColumnElem = [];
 		this.searchGridHeaderElem.each(function(elem,index){			
 			if(index!=10){
-				if(index == 6){
+				if(index == 2){
+					index++;
+					elem.click();
+					self.searchGridRowsElem.each(function(elem,i){
+						var indexRows = i+1;
+						element(by.xpath("((//div[@id='PatientSearchGrid']//tbody/tr)["+indexRows+"])/td["+index+"]")).getText().then(function(text){
+							ColumnElem[i] = text;
+							//console.log(ColumnElem[i]);
+						})
+					})
+					browser.waitForAngular().then(function() {
+						basePage.sortAndCompareList(ColumnElem,'number');
+					})
+				}				
+				else if(index == 6){
 					index++;
 					elem.click();
 					self.searchGridRowsElem.each(function(elem,i){

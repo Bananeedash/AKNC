@@ -15,5 +15,13 @@ describe('Daily view',function(){
 	})
 	it('should verify show all check box behaviour',function(){
 		schedulingMainScreen.verifyShowAll();
+		schedulingMainScreen.checkAProvider('AEC');
+	})
+	it('should verify calendar elements',function(){
+		schedulingMainScreen.calendaHeaderFooter();
+		schedulingMainScreen.navigateToDate();
+	})
+	xit('should verify name of provider displayed on hovering on checkboxes',function(){
+		schedulingMainScreen.providerNameDispOnHover();
 	})
 })

@@ -13,23 +13,23 @@ var constants = function() {
 	this.searchDefault1 = 'DATE OF BIRTH';
 	this.searchDefault2 = 'LAST NAME';
 	this.searchDefault3 = 'MRN / CHART #';
-	this.DOBInput = '04/06/2016';
-	this.patientDOB = '04/06/16';
+	this.DOBInput = '01/02/1977';
+	this.patientDOB = '01/02/77';
 	this.emailInput = 'bananee.dash@mindfiresolutions.com';
 	this.FNInput = 'JOHN';
 	this.genderInput = 'FEMALE';
 	this.MSInput = 'DIVORCED';
 	this.MNInput = 'JUAN';
 	this.LNInput = 'FISHER';
-	this.MRNInput = '1011024';
+	this.MRNInput = '4';
 	this.quickSearchInputType1 = 'FN';
 	this.quickSearchInputType2 = 'LN';
 	this.quickSearchInputType3 = 'MRN';
 	this.quickSearchInputType4 = 'DOB';
 	this.quickSearchFNInput = 'john';
 	this.quickSearchLNInput = 'Mat';
-	this.quickSearchMRNInput = '1011070';
-	this.quickSearchDOBInput = '4/6/2016';
+	this.quickSearchMRNInput = '70';
+	this.quickSearchDOBInput = '1/2/1977';
 	
 	//PATIENT HUB SCREEN Constants
 	this.patientInfoLabels = [ 'MRN:','DOB:','AGE:','SEX:','ADDRESS:','CELL:','EMAIL:','ATTENDING PROVIDER:','SECONDARY PROVIDER:', 
@@ -49,9 +49,13 @@ var constants = function() {
 	                              'OKLAHOMA', 'OREGON', 'PALAU', 'PENNSYLVANIA', 'PUERTO RICO', 'RHODE ISLAND', 'SOUTH CAROLINA', 'SOUTH DAKOTA',
 	                              'TENNESSEE', 'TEXAS', 'UTAH', 'VERMONT', 'VIRGIN ISLANDS', 'VIRGINIA', 'WASHINGTON', 'WEST VIRGINIA', 'WISCONSIN',
 	                              'WYOMING' ];*/
+	this.patientAddress = ['1950 NE Burnside Rd','Drop at the gate','2C','Gresham',' OREGON','97030','7949'];
 	
+	this.cellPhoneNumber = '8582217576';
 	
-	
+	//SCHEDULING CONSTANTS
+	this.providerTitle = ['Aaron Brooklyn Murphy Neuro-endocrinologist','Adalyn Barry Roberts Vascular neurologist','Allan Donald Price Neuro-infectious diseases',
+	                      'Avery Ernest Wood Vascular neurologist','Aria Gordon Wood Neuro-infectious diseases'];
 	
 	
 	
