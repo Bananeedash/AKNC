@@ -13,8 +13,8 @@ var constants = function() {
 	this.searchDefault1 = 'DATE OF BIRTH';
 	this.searchDefault2 = 'LAST NAME';
 	this.searchDefault3 = 'MRN / CHART #';
-	this.DOBInput = '01/02/1977';
-	this.patientDOB = '01/02/77';
+	this.DOBInput = '01/05/1963';
+	this.patientDOB = '01/05/63';
 	this.emailInput = 'bananee.dash@mindfiresolutions.com';
 	this.FNInput = 'JOHN';
 	this.genderInput = 'FEMALE';
@@ -29,7 +29,7 @@ var constants = function() {
 	this.quickSearchFNInput = 'john';
 	this.quickSearchLNInput = 'Mat';
 	this.quickSearchMRNInput = '70';
-	this.quickSearchDOBInput = '1/2/1977';
+	this.quickSearchDOBInput = '1/5/1963';
 	
 	//PATIENT HUB SCREEN Constants
 	this.patientInfoLabels = [ 'MRN:','DOB:','AGE:','SEX:','ADDRESS:','CELL:','EMAIL:','ATTENDING PROVIDER:','SECONDARY PROVIDER:', 
@@ -40,7 +40,11 @@ var constants = function() {
 	this.patientHubRightTabsLabels = ['APPOINTMENTS', 'ENCOUNTER', 'EMR', 'RX', 'ACCOUNT', 'ORDERS', 'DOCUMENTS' ];
 	
 	//Demographics Constants
-	
+	this.splCharInput = '@@#$';
+	this.numericInput = '8148';
+	this.aphaNumericInput = 'ASD7854';
+	this.maxCharInput = 'abcdefhijklmnopqrstuvwxyzabcdefhijklmnopqrstuvwxyz';
+	this.gtThanMaxCharInput = 'abcdefhijklmnopqrstuvwxyzabcdefhijklmnopqrstuvwxyzz';
 	/*this.stateAlphabeticalList = ['-- SELECT --', 'ALABAMA', 'ALASKA', 'AMERICAN SAMOA', 'ARIZONA', 'ARKANSAS', 'CALIFORNIA', 'COLORADO', 'CONNECTICUT',
 	                              'DELAWARE', 'DISTRICT OF COLUMBIA', 'FEDERATED STATES OF MICRONESIA', 'FLORIDA', 'GEORGIA', 'GUAM', 'HAWAII', 'IDAHO', 
 	                              'ILLINOIS', 'INDIANA', 'IOWA', 'KANSAS', 'KENTUCKY', 'LOUISIANA', 'MAINE', 'MARSHALL ISLANDS', 'MARYLAND',
@@ -56,7 +60,6 @@ var constants = function() {
 	//SCHEDULING CONSTANTS
 	this.providerTitle = ['Aaron Brooklyn Murphy Neuro-endocrinologist','Adalyn Barry Roberts Vascular neurologist','Allan Donald Price Neuro-infectious diseases',
 	                      'Avery Ernest Wood Vascular neurologist','Aria Gordon Wood Neuro-infectious diseases'];
-	
 	
 	
 }

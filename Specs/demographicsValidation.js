@@ -51,9 +51,15 @@ describe('Demographics accordion',function(){
 	it('should verify behaviour of sms pop-up',function(){
 		patientDetails.validateSMSPopUp();
 	})
-	xit('should verify behaviour of Resend invite button',function(){
+	it('should verify behaviour of Resend invite button',function(){
 		//patientDetails.demographicsEditButtonElem.click();
 		patientDetails.validateResendInvite();
+	})
+	it('should validate required fields',function(){
+		//patientDetails.demographicsEditButtonElem.click();
+		//patientDetails.verifyRequiredFields();
+		patientDetails.lastNameFieldValidation();
+		patientDetails.firstNameFieldValidation();
 	})
 	
 	

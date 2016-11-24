@@ -31,6 +31,10 @@ var patientDetails = function(){
 	this.patientEmailInputElem = element(by.xpath("//input[@id='email']"));
 	this.resendInviteButtonElem = element(by.xpath("//button[@id='resendPortalInvite']"));
 	this.invalidEmailTooltipElem = element(by.xpath("//input[@id='email']/ancestor::div[@class='divControl']//span"));
+	this.lastNameInputElem = element(by.xpath("//input[@ng-reflect-name='LastName']"));
+	this.lastNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='LastName']/ancestor::div[@class='subDivControl']//span"));
+	this.firstNameInputElem = element(by.xpath("//input[@ng-reflect-name='FirstName']"));
+	this.firstNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='FirstName']/ancestor::div[@class='subDivControl']//span"));
 
 	var self = this;
 
@@ -267,28 +271,106 @@ var patientDetails = function(){
 	//RESEND INVITE
 	this.validateResendInvite = function(){
 		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).not.toContain('This is a required field');
-		//this.patientEmailInputElem.sendKeys('abcdefgh');
-		//expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('Invalid email');
+		this.patientEmailInputElem.sendKeys('abcdefgh');
+		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('Invalid email');
+		basePage.clearField(this.patientEmailInputElem);
 		this.patientEmailInputElem.sendKeys('bananee.dash@mindfiresolutions.com');
 		this.resendInviteButtonElem.click();
 		self.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(message) {
 				console.log(message);
 				expect(message).toContain('Sending Email');
+				browser.sleep(2000);
+				self.validatorMsgElem.isDisplayed().then(function() {
+					self.validatorMsgElem.getText().then(function(message1) {
+						console.log(message1);
+						expect(message1).toContain('Email Sent Successfully');
+					})
+				})
 			})
 		})
-		/*self.validatorMsgElem.isDisplayed().then(function() {
-			self.validatorMsgElem.getText().then(function(message) {
-				console.log(message);
-				expect(message).toContain('Email Sent Successfully');
-			})
-		})*/
-		
-	}
-	this.verifyRequiredFields = function(){
-		
+		browser.sleep(2000);
 	}
 	
+	//REQUIRED FIELDS VALIDATION
+	this.lastNameFieldValidation = function(){
+		var flag=0;
+		this.lastNameInputElem.clear().then(function(){
+			self.lastNameInputElem.sendKeys(constants.splCharInput).then(function() {
+				console.log('Special Char');
+			})			
+		})
+		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.lastNameInputElem.clear().then(function(){
+			self.lastNameInputElem.sendKeys(constants.numericInput).then(function() {
+				console.log('Numeric');
+			})
+		})
+		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.lastNameInputElem.clear().then(function(){
+			self.lastNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				console.log('Alphanumeric');
+			})
+		})
+		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.lastNameInputElem.clear().then(function(){
+			self.lastNameInputElem.sendKeys(constants.maxCharInput).then(function() {
+				console.log('maximum');
+			})
+		})
+		this.lastNameTooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.lastNameInputElem.clear().then(function(){
+			self.lastNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
+				console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for last name.');
+	}
+	this.firstNameFieldValidation = function(){
+		var flag=0;
+		this.firstNameInputElem.clear().then(function(){
+			self.firstNameInputElem.sendKeys(constants.splCharInput).then(function() {
+				console.log('Special Char');
+			})			
+		})
+		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.firstNameInputElem.clear().then(function(){
+			self.firstNameInputElem.sendKeys(constants.numericInput).then(function() {
+				console.log('Numeric');
+			})
+		})
+		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.firstNameInputElem.clear().then(function(){
+			self.firstNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				console.log('Alphanumeric');
+			})
+		})
+		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.firstNameInputElem.clear().then(function(){
+			self.firstNameInputElem.sendKeys(constants.maxCharInput).then(function() {
+				console.log('maximum');
+			})
+		})
+		this.firstNameTooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.firstNameInputElem.clear().then(function(){
+			self.firstNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
+				console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for first name.');
+	}
 
 }
 module.exports = new patientDetails();
