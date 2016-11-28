@@ -26,7 +26,13 @@ var basePage = function() {
 		return elemLocator.count();
 	}
 	this.clearField = function(fieldLocator){
-		fieldLocator.clear();
+			fieldLocator.click().then(function() {
+			browser.actions().keyDown(protractor.Key.CONTROL).sendKeys('a').perform();
+			browser.actions().keyUp(protractor.Key.CONTROL).perform();
+			browser.sleep(3000);
+			console.log('clear field');
+			browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+		})
 	}
 	this.sortAndCompareList = function(listElem,type){
 		var i=0;
@@ -168,5 +174,11 @@ var basePage = function() {
 			day = 'SATURDAY';
 		return day;
 	}
+	/*this.DOBFieldValidator = function(fieldLoc){
+		var date = new Date();
+		fieldLoc.sendKeys(constants.futureDate);
+		
+		
+	}*/
 }
 module.exports = new basePage();

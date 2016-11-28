@@ -27,25 +27,27 @@ describe('Demographics accordion',function(){
 	it('should verify that error message is displayed when city, state and respective zip is input',function(){
 		patientDetails.validateWCityStateZipInput();
 	})
-	xit('should verify that error message is displayed when both city and zip are left blank',function(){
+	it('should verify that error message is displayed when both city and zip are left blank',function(){
 		patientDetails.validateAddressWoZipAndState();
 	})
 	it('should verify patient address validator',function(){
+		//patientDetails.demographicsEditButtonElem.click();
 		patientDetails.verifyAddressValidator();
 	})
-	xit('should verify validator behavior when zip and plus4 fields are left blank',function(){
+	it('should verify validator behavior when zip and plus4 fields are left blank',function(){
 		patientDetails.verifyAddrsValidatorWithoutZip();
 	})
-	xit('should verify validator behavior when City field is left blank',function(){
+	it('should verify validator behavior when City field is left blank',function(){
 		patientDetails.verifyAddrsValidatorWithoutCity();
 	})
-	xit('should verify validator behavior when invalid state is selected',function(){
+	it('should verify validator behavior when invalid state is selected',function(){
 		patientDetails.verifyAddrsValidatorWithInvState();
 	})
-	xit('should verify Address 2 field can be left blank',function(){
+	it('should verify Address 2 field can be left blank',function(){
+		//patientDetails.demographicsEditButtonElem.click();
 		patientDetails.verifyAddrs2Blank();
 	})
-	xit('should verify APT field can be left blank',function(){
+	it('should verify APT field can be left blank',function(){
 		patientDetails.verifyAptBlank();
 	})
 	it('should verify behaviour of sms pop-up',function(){
@@ -57,7 +59,7 @@ describe('Demographics accordion',function(){
 	})
 	it('should validate required fields',function(){
 		//patientDetails.demographicsEditButtonElem.click();
-		//patientDetails.verifyRequiredFields();
+		patientDetails.verifyRequiredFields();
 		patientDetails.lastNameFieldValidation();
 		patientDetails.firstNameFieldValidation();
 	})

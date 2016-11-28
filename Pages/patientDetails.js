@@ -35,6 +35,7 @@ var patientDetails = function(){
 	this.lastNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='LastName']/ancestor::div[@class='subDivControl']//span"));
 	this.firstNameInputElem = element(by.xpath("//input[@ng-reflect-name='FirstName']"));
 	this.firstNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='FirstName']/ancestor::div[@class='subDivControl']//span"));
+	this.DOBFieldElem = element(by.xpath("//input[@id='dob']"));
 
 	var self = this;
 
@@ -63,13 +64,12 @@ var patientDetails = function(){
 		this.plus4InputElem.sendKeys(constants.patientAddress[6]);
 	}
 	this.clearAllAddressFields = function(){
-		//basePage.clearField(self.demographicsEditButtonElem);
-		basePage.clearField(self.add1InputElem);
-		basePage.clearField(self.add2InputElem);
-		basePage.clearField(self.aptInputElem);
-		basePage.clearField(self.cityInputElem);
-		basePage.clearField(self.zipInputElem);
-		basePage.clearField(self.plus4InputElem);
+		this.add1InputElem.clear();
+		this.add2InputElem.clear();
+		this.aptInputElem.clear();
+		this.cityInputElem.clear();
+		this.zipInputElem.clear();
+		this.plus4InputElem.clear();
 		element(by.cssContainingText('option', 'ALASKA')).click();		
 	}
 	this.validateWZipInput = function(){
@@ -126,8 +126,21 @@ var patientDetails = function(){
 
 	}
 	this.verifyAddrsValidatorWithoutZip = function(){
-		basePage.clearField(self.zipInputElem);
-		basePage.clearField(self.plus4InputElem);
+		basePage.clearField(this.zipInputElem);
+		/*this.zipInputElem.click().then(function() {
+			console.log('clear zip input');
+			for(var i=0;i<10;i++){
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			}
+		})*/
+		basePage.clearField(this.plus4InputElem);
+		/*this.plus4InputElem.click().then(function() {
+			console.log('clear +4 input');
+			for(var i=0;i<10;i++){
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			}
+		})*/
+		browser.sleep(4000);
 		this.validateAddressButtonElem.click();
 		this.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(validated) {
@@ -140,7 +153,13 @@ var patientDetails = function(){
 		browser.sleep(4000);
 	}
 	this.verifyAddrsValidatorWithoutCity = function(){
-		basePage.clearField(self.cityInputElem);
+		basePage.clearField(this.cityInputElem);
+		/*this.cityInputElem.click().then(function() {
+			console.log('clear city input');
+			for(var i=0;i<10;i++){
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			}
+		})*/
 		this.validateAddressButtonElem.click();
 		this.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(validated) {
@@ -167,21 +186,35 @@ var patientDetails = function(){
 	}
 	
 	this.validateAddressWoZipAndState = function(){
-		
+		this.clearAllAddressFields();
 		this.inputValidAddress();
 		element(by.cssContainingText('option', 'OHIO')).click();
 		browser.sleep(5000);
-		this.zipInputElem.click();
-		this.zipInputElem.clear();
-		//basePage.clearField(self.zipInputElem);
-		browser.sleep(5000);
-		this.plus4InputElem.click();
-		basePage.clearField(self.plus4InputElem);
-		browser.sleep(5000);
-		basePage.clearField(self.cityInputElem);
-		browser.sleep(5000);
+		basePage.clearField(this.zipInputElem);
+		/*this.zipInputElem.click().then(function() {
+			console.log('clear zip input');
+			for(var i=0;i<10;i++){
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			}
+		})*/
+		browser.sleep(2000);
+		basePage.clearField(this.plus4InputElem);
+		/*this.plus4InputElem.click().then(function() {
+			console.log('clear +4 input');
+			for(var i=0;i<10;i++){
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			}
+		})*/
+		browser.sleep(2000);
+		basePage.clearField(this.cityInputElem);
+		/*this.cityInputElem.click().then(function() {
+			console.log('clear city input');
+			for(var i=0;i<10;i++){
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			}
+		})*/
+		browser.sleep(2000);
 		this.validateAddressButtonElem.click();
-		browser.sleep(5000);
 		this.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(validated) {
 				console.log(validated);
@@ -189,7 +222,7 @@ var patientDetails = function(){
 			})
 		})
 		this.stateElem.element(by.css('option:checked')).getText().then(function(state){
-			expect(state).toEqual('OHIO');
+			expect(state).toEqual(' OHIO');
 		})
 		browser.sleep(4000);
 	}
@@ -197,7 +230,7 @@ var patientDetails = function(){
 	this.verifyAddrs2Blank = function(){
 		this.clearAllAddressFields();
 		this.inputValidAddress();
-		basePage.clearField(self.add2InputElem);
+		basePage.clearField(this.add2InputElem);		
 		this.validateAddressButtonElem.click();
 		this.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(validated) {
@@ -210,7 +243,13 @@ var patientDetails = function(){
 	}
 
 	this.verifyAptBlank = function(){
-		basePage.clearField(self.aptInputElem);
+		basePage.clearField(this.aptInputElem);
+		/*this.aptInputElem.click().then(function() {
+			console.log('clear apt input');
+			for(var i=0;i<10;i++){
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			}
+		})*/
 		this.validateAddressButtonElem.click();
 		this.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(validated) {
@@ -238,7 +277,7 @@ var patientDetails = function(){
 					expect(message).toContain('Please enter cell phone number');
 				})
 			})
-			browser.sleep(3000);
+			browser.sleep(4000);
 			if(index===0){
 				self.patientCellPhnInputElem.sendKeys(constants.cellPhoneNumber);
 				var phnFormat = self.patientCellPhnInputElem.getAttribute('value');
@@ -263,14 +302,14 @@ var patientDetails = function(){
 					expect(message).toContain('SMS Sent Successfully');
 				})
 			})
-			browser.sleep(3000);
+			browser.sleep(4000);
 		})
 
 	}
 	
 	//RESEND INVITE
 	this.validateResendInvite = function(){
-		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).not.toContain('This is a required field');
+		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('This is a required field');
 		this.patientEmailInputElem.sendKeys('abcdefgh');
 		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('Invalid email');
 		basePage.clearField(this.patientEmailInputElem);
@@ -371,6 +410,16 @@ var patientDetails = function(){
 		})
 		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for first name.');
 	}
+	
+	this.verifyRequiredFields = function(){
+		basePage.clearField(this.lastNameInputElem);
+		browser.sleep(2000);
+		expect(self.lastNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');	
+	}
+	
+	/*this.validateDOBField = function(){
+		basePage.DOBFieldValidator(self.DOBFieldElem);
+	}*/
 
 }
 module.exports = new patientDetails();

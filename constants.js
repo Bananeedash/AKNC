@@ -56,6 +56,7 @@ var constants = function() {
 	this.patientAddress = ['1950 NE Burnside Rd','Drop at the gate','2C','Gresham',' OREGON','97030','7949'];
 	
 	this.cellPhoneNumber = '8582217576';
+	this.futureDate = '01/02/2020';
 	
 	//SCHEDULING CONSTANTS
 	this.providerTitle = ['Aaron Brooklyn Murphy Neuro-endocrinologist','Adalyn Barry Roberts Vascular neurologist','Allan Donald Price Neuro-infectious diseases',
