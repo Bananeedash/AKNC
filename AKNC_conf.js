@@ -1,4 +1,3 @@
-// An example configuration file.
 exports.config = {
     directConnect: true,
     //seleniumServerJar: "C:/Users/bananee.dash/AppData/Roaming/npm/node_modules/protractor/selenium-2.53.0/selenium-java-2.53.0.jar",
@@ -8,7 +7,7 @@ exports.config = {
     capabilities: {
         'browserName': 'chrome',
         'shardTestFiles': true,
-        'maxInstances': 1
+        'maxInstances': 3
     },
     useAllAngular2AppRoots: true,
     onPrepare: function () {

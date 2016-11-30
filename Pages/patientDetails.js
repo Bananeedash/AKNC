@@ -36,6 +36,8 @@ var patientDetails = function(){
 	this.firstNameInputElem = element(by.xpath("//input[@ng-reflect-name='FirstName']"));
 	this.firstNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='FirstName']/ancestor::div[@class='subDivControl']//span"));
 	this.DOBFieldElem = element(by.xpath("//input[@id='dob']"));
+	this.nickNameInputElem = element(by.xpath("//input[@ng-reflect-name='NickName']"));
+	this.nickNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='NickName']/ancestor::div[@class='divControl']//span"));
 
 	var self = this;
 
@@ -309,7 +311,7 @@ var patientDetails = function(){
 	
 	//RESEND INVITE
 	this.validateResendInvite = function(){
-		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		//expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('This is a required field');
 		this.patientEmailInputElem.sendKeys('abcdefgh');
 		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('Invalid email');
 		basePage.clearField(this.patientEmailInputElem);
@@ -333,6 +335,7 @@ var patientDetails = function(){
 	
 	//REQUIRED FIELDS VALIDATION
 	this.lastNameFieldValidation = function(){
+		var lastname = this.lastNameInputElem.getAttribute('value');
 		var flag=0;
 		this.lastNameInputElem.clear().then(function(){
 			self.lastNameInputElem.sendKeys(constants.splCharInput).then(function() {
@@ -370,8 +373,10 @@ var patientDetails = function(){
 			})
 		})
 		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for last name.');
+		this.lastNameInputElem.clear().sendKeys(lastname);
 	}
 	this.firstNameFieldValidation = function(){
+		var firstname = this.firstNameInputElem.getAttribute('value');
 		var flag=0;
 		this.firstNameInputElem.clear().then(function(){
 			self.firstNameInputElem.sendKeys(constants.splCharInput).then(function() {
@@ -409,12 +414,60 @@ var patientDetails = function(){
 			})
 		})
 		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for first name.');
+		this.firstNameInputElem.clear().sendKeys(firstname);
+	}
+	
+	this.nickNameFieldValidation = function(){
+		var nickname = this.nickNameInputElem.getAttribute('value');
+		var flag=0;
+		this.nickNameInputElem.clear().then(function(){
+			self.nickNameInputElem.sendKeys(constants.splCharInput).then(function() {
+				console.log('Special Char');
+			})			
+		})
+		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.nickNameInputElem.clear().then(function(){
+			self.nickNameInputElem.sendKeys(constants.numericInput).then(function() {
+				console.log('Numeric');
+			})
+		})
+		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.nickNameInputElem.clear().then(function(){
+			self.nickNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				console.log('Alphanumeric');
+			})
+		})
+		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.nickNameInputElem.clear().then(function(){
+			self.nickNameInputElem.sendKeys(constants.maxCharInput).then(function() {
+				console.log('maximum');
+			})
+		})
+		this.nickNameTooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.nickNameInputElem.clear().then(function(){
+			self.nickNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
+				console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
+		this.nickNameInputElem.clear().sendKeys(nickname);
 	}
 	
 	this.verifyRequiredFields = function(){
 		basePage.clearField(this.lastNameInputElem);
 		browser.sleep(2000);
-		expect(self.lastNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');	
+		expect(self.lastNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		basePage.clearField(this.firstNameInputElem);
+		browser.sleep(2000);
+		expect(self.firstNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		
+		
 	}
 	
 	/*this.validateDOBField = function(){

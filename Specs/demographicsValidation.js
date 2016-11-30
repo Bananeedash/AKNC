@@ -14,6 +14,7 @@ describe('Demographics accordion',function(){
 		patientSearchScreen.searchGridRowsElem.get(0).click();
 		patientHubScreen.navigateToPatientDetails();
     	patientDetails.validateAllElementsOfDemographicsAccordion();
+    	//patientDetails.demographicsEditButtonElem.click();
 	})
 	it('should verify the order of state options list',function(){
 		patientDetails.validateAlphaOrderStateList();
@@ -59,9 +60,10 @@ describe('Demographics accordion',function(){
 	})
 	it('should validate required fields',function(){
 		//patientDetails.demographicsEditButtonElem.click();
-		patientDetails.verifyRequiredFields();
+		//patientDetails.verifyRequiredFields();
 		patientDetails.lastNameFieldValidation();
 		patientDetails.firstNameFieldValidation();
+		patientDetails.nickNameFieldValidation();
 	})
 	
 	
