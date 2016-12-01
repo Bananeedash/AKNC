@@ -19,6 +19,9 @@ describe('Demographics accordion',function(){
 	it('should verify the order of state options list',function(){
 		patientDetails.validateAlphaOrderStateList();
 	})
+	xit('should verify all mandatory fields',function(){
+		patientDetails.verifyRequiredFields();
+	})
 	it('should verify that error message is displayed when only zip is input',function(){
 		patientDetails.validateWZipInput();
 	})
@@ -58,9 +61,8 @@ describe('Demographics accordion',function(){
 		//patientDetails.demographicsEditButtonElem.click();
 		patientDetails.validateResendInvite();
 	})
-	it('should validate required fields',function(){
+	it('should validate all free input fields',function(){
 		//patientDetails.demographicsEditButtonElem.click();
-		//patientDetails.verifyRequiredFields();
 		patientDetails.lastNameFieldValidation();
 		patientDetails.firstNameFieldValidation();
 		patientDetails.nickNameFieldValidation();

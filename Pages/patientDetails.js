@@ -10,10 +10,12 @@ var patientDetails = function(){
 	this.patientImgInDemographicsElem = element(by.xpath("//div/img"));
 	this.demographicsEditButtonElem = element(by.xpath("//div/button[@id='editDemographics']"));
 	this.demographicsFieldsElem = element(by.xpath("(//div[@class='col-md-12']//div)[2]"));
-	this.add1InputElem = element(by.xpath("//ul[@class='step-one']//input[@id='add1']"));
+	this.add1InputElem = element(by.xpath("//input[@id='add1']"));
+	this.add1TooltipElem = element(by.xpath("//input[@id='add1']/ancestor::div[@class='divControl']//span"));
 	this.add2InputElem = element(by.xpath("//ul[@class='step-one']//input[@id='add2']"));
 	this.aptInputElem = element(by.xpath("//ul[@class='step-one']//input[@ng-reflect-name='Apt']"));
 	this.cityInputElem = element(by.xpath("//ul[@class='step-one']//input[@id='city']"));
+	this.cityTooltipElem = element(by.xpath("//input[@id='city']/ancestor::div[@class='divControl']//span"));
 	this.stateElem = element(by.xpath("//ul[@class='step-one']//select[@ng-reflect-name='State']"));
 	this.stateSelectListElem = element.all(by.xpath("//ul[@class='step-one']//select[@ng-reflect-name='State']/option"));
 	this.zipInputElem = element(by.xpath("//ul[@class='step-one']//input[@id='zip']"));
@@ -21,7 +23,9 @@ var patientDetails = function(){
 	this.validateAddressButtonElem = element(by.xpath("//ul[@class='step-one']//button[@id='validateAddress']"));
 	this.validatorMsgElem = element(by.xpath("//div[@class='k-notification-wrap']"));
 	this.patientCellPhnInputElem = element(by.xpath('//input[@id="cellPhone"]'));
+	this.pttCellPhnTooltipElem = element(by.xpath('//input[@id="cellPhone"]/ancestor::div[@class="divControl"]//span'));
 	this.emergncyCellPhnInputElem = element(by.xpath('(//input[@ng-reflect-name="CellPhone"])[2]'));
+	this.emgyCellPhnTooltipElem = element(by.xpath("(//input[@ng-reflect-name='CellPhone'])[2]/ancestor::div[@class='divControl']//span"))
 	this.smsButtonElem = element.all(by.buttonText('SMS'));
 	this.smsPopUpWindowElem = element(by.xpath('//div[@id="SendSmsPopup"]'));
 	this.smsPopUpWinHeaderElem = element(by.xpath('//span[@id="SendSmsPopup_wnd_title"]'));
@@ -29,6 +33,7 @@ var patientDetails = function(){
 	this.smsContentTextboxElem = element(by.xpath('//textarea[@id="messageContent"]'));
 	this.sendSMSButtonElem = element(by.xpath('//button[@id="sendSms"]'));
 	this.patientEmailInputElem = element(by.xpath("//input[@id='email']"));
+	this.pttEmailTooltipElem = element(by.xpath("//input[@id='email']/ancestor::div[@class='divControl']//span"));
 	this.resendInviteButtonElem = element(by.xpath("//button[@id='resendPortalInvite']"));
 	this.invalidEmailTooltipElem = element(by.xpath("//input[@id='email']/ancestor::div[@class='divControl']//span"));
 	this.lastNameInputElem = element(by.xpath("//input[@ng-reflect-name='LastName']"));
@@ -459,15 +464,24 @@ var patientDetails = function(){
 		this.nickNameInputElem.clear().sendKeys(nickname);
 	}
 	
+	
 	this.verifyRequiredFields = function(){
-		basePage.clearField(this.lastNameInputElem);
-		browser.sleep(2000);
-		expect(self.lastNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		basePage.clearField(this.lastNameInputElem).then(function(name) {
+			expect(self.lastNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			self.lastNameInputElem.sendKeys(name);
+		})
 		basePage.clearField(this.firstNameInputElem);
-		browser.sleep(2000);
-		expect(self.firstNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-		
-		
+		expect(self.firstNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');	
+		basePage.clearField(this.add1InputElem);
+		expect(self.add1TooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		basePage.clearField(this.cityInputElem);
+		expect(self.cityTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		basePage.clearField(this.patientCellPhnInputElem);
+		expect(self.pttCellPhnTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		basePage.clearField(this.patientEmailInputElem);
+		expect(self.pttEmailTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		basePage.clearField(this.emergncyCellPhnInputElem);
+		expect(self.emgyCellPhnTooltipElem.getAttribute("textContent")).toContain('This is a required field');
 	}
 	
 	/*this.validateDOBField = function(){

@@ -49,7 +49,7 @@ describe('Home Page',function () {
     	welcomePage.navigateToPracticeMgmtModule();
     	basePage.checkURL('practicemanagement');    	
     })
-    xit('should navigate to Users module and check URL',function(){
+    it('should navigate to Users module and check URL',function(){
     	welcomePage.navigateToUsersModule();
     	basePage.checkURL('users');    	
     })

@@ -26,13 +26,17 @@ var basePage = function() {
 		return elemLocator.count();
 	}
 	this.clearField = function(fieldLocator){
+		var value = fieldLocator.getAttribute('value');
+		if(value != ''){
 			fieldLocator.click().then(function() {
-			browser.actions().keyDown(protractor.Key.CONTROL).sendKeys('a').perform();
-			browser.actions().keyUp(protractor.Key.CONTROL).perform();
-			browser.sleep(3000);
-			console.log('clear field');
-			browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
-		})
+				browser.actions().keyDown(protractor.Key.CONTROL).sendKeys('a').perform();
+				browser.actions().keyUp(protractor.Key.CONTROL).perform();
+				browser.sleep(3000);
+				//console.log('clear field');
+				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
+			})
+			return value;
+		}		
 	}
 	this.sortAndCompareList = function(listElem,type){
 		var i=0;
