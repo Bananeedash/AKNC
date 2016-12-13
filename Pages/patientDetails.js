@@ -16,19 +16,21 @@ var patientDetails = function(){
 	this.aptInputElem = element(by.xpath("//ul[@class='step-one']//input[@ng-reflect-name='Apt']"));
 	this.cityInputElem = element(by.xpath("//ul[@class='step-one']//input[@id='city']"));
 	this.cityTooltipElem = element(by.xpath("//input[@id='city']/ancestor::div[@class='divControl']//span"));
-	this.stateElem = element(by.xpath("//ul[@class='step-one']//select[@ng-reflect-name='State']"));
-	this.stateSelectListElem = element.all(by.xpath("//ul[@class='step-one']//select[@ng-reflect-name='State']/option"));
 	this.zipInputElem = element(by.xpath("//ul[@class='step-one']//input[@id='zip']"));
+	this.zipTooltipElem = element(by.xpath("//ul[@class='step-one']//input[@id='zip']/ancestor::div[@class='divControl']//span"))
 	this.plus4InputElem = element(by.xpath("//ul[@class='step-one']//input[@id='plus4']"));
 	this.validateAddressButtonElem = element(by.xpath("//ul[@class='step-one']//button[@id='validateAddress']"));
 	this.validatorMsgElem = element(by.xpath("//div[@class='k-notification-wrap']"));
+	this.patientHomePhnInputElem = element(by.xpath('//input[@ng-reflect-name="HomePhone"]'));
+	this.patientWorkPhnInputElem = element(by.xpath('//input[@ng-reflect-name="WorkPhone"]'));
 	this.patientCellPhnInputElem = element(by.xpath('//input[@id="cellPhone"]'));
 	this.pttCellPhnTooltipElem = element(by.xpath('//input[@id="cellPhone"]/ancestor::div[@class="divControl"]//span'));
 	this.emergncyCellPhnInputElem = element(by.xpath('(//input[@ng-reflect-name="CellPhone"])[2]'));
-	this.emgyCellPhnTooltipElem = element(by.xpath("(//input[@ng-reflect-name='CellPhone'])[2]/ancestor::div[@class='divControl']//span"))
+	this.emgyCellPhnTooltipElem = element(by.xpath("(//input[@ng-reflect-name='CellPhone'])[2]/ancestor::div[@class='divControl']//span"));
+	this.familyPhnNumInputElem = element.all(by.xpath("//input[@ng-reflect-name='PhoneNumber']")); 
 	this.smsButtonElem = element.all(by.buttonText('SMS'));
-	this.smsPopUpWindowElem = element(by.xpath('//div[@id="SendSmsPopup"]'));
-	this.smsPopUpWinHeaderElem = element(by.xpath('//span[@id="SendSmsPopup_wnd_title"]'));
+	this.smsPopUpWindowElem = element(by.xpath('//div[@id="windowHolderSendSmsPopup"]'));
+	this.smsPopUpWinHeaderElem = element(by.xpath('//span[@id="windowHolderSendSmsPopup_wnd_title"]'));
 	this.phnFieldSMSPopUpElem = element(by.xpath('//input[@id="smsPopupCell"]'));
 	this.smsContentTextboxElem = element(by.xpath('//textarea[@id="messageContent"]'));
 	this.sendSMSButtonElem = element(by.xpath('//button[@id="sendSms"]'));
@@ -43,13 +45,49 @@ var patientDetails = function(){
 	this.DOBFieldElem = element(by.xpath("//input[@id='dob']"));
 	this.nickNameInputElem = element(by.xpath("//input[@ng-reflect-name='NickName']"));
 	this.nickNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='NickName']/ancestor::div[@class='divControl']//span"));
+	
+	//Drop-down elements
+	this.genderDrdElem = element(by.xpath("//select[@ng-reflect-name='Gender']"));
+	this.genderDrdOptionsElem = element.all(by.xpath("//select[@ng-reflect-name='Gender']//option"));
+	this.genderTooltipElem = element(by.xpath("//select[@ng-reflect-name='Gender']//ancestor::div[@class='form-group divWrapper']//span"));
+	this.pttType1Elem = element(by.xpath("//select[@ng-reflect-name='PatientType1']"));
+	this.pttType1OptionsElem = element.all(by.xpath("//select[@ng-reflect-name='PatientType1']//option"));
+	this.pttType1TooltipElem = element(by.xpath("//select[@ng-reflect-name='PatientType1']//ancestor::div[@class='form-group divWrapper']//span"));
+	this.pttType2Elem = element(by.xpath("//select[@ng-reflect-name='PatientType2']"));
+	this.pttType2OptionsElem = element.all(by.xpath("//select[@ng-reflect-name='PatientType2']//option"));
+	this.ccDrdElem = element(by.xpath("//select[@ng-reflect-name='Cc']"));
+	this.ccDrdOptionsElem = element.all(by.xpath("//select[@ng-reflect-name='Cc']//option"));
+	this.statusDrdElem= element(by.xpath("//select[@ng-reflect-name='Status']"));
+	this.statusDrdOptionsElem= element.all(by.xpath("//select[@ng-reflect-name='Status']//option"));
+	this.stateDrdElem= element(by.xpath("//select[@ng-reflect-name='State']"));
+	this.stateDrdOptionsElem= element.all(by.xpath("//select[@ng-reflect-name='State']//option"));
+	this.stateTooltipElem = element(by.xpath("//select[@ng-reflect-name='State']//ancestor::div[@class='form-group divWrapper']//span"));
+	this.raceDrdElem = element(by.xpath("//select[@ng-reflect-name='Race']"));
+	this.raceDrdOptionsElem = element.all(by.xpath("//select[@ng-reflect-name='Race']//option"));
+	this.raceTooltipElem = element(by.xpath("//select[@ng-reflect-name='Race']//ancestor::div[@class='form-group divWrapper']//span"));
+	this.ethnicityDrdElem = element(by.xpath("//select[@ng-reflect-name='Ethnicity']"));
+	this.ethnicityDrdOptionsElem = element.all(by.xpath("//select[@ng-reflect-name='Ethnicity']//option"));
+	this.ethnicityTooltipElem = element(by.xpath("//select[@ng-reflect-name='Ethnicity']//ancestor::div[@class='form-group divWrapper']//span"));
+	this.languageDrdElem= element(by.xpath("//select[@ng-reflect-name='Language']"));
+	this.languageDrdOptionsElem= element.all(by.xpath("//select[@ng-reflect-name='Language']//option"));
+	this.languageTooltipElem = element(by.xpath("//select[@ng-reflect-name='Language']//ancestor::div[@class='form-group divWrapper']//span"));
+	this.priPvdDrdElem= element(by.xpath("//select[@ng-reflect-name='Rpp']"));
+	this.priPvdDrdOptionsElem= element.all(by.xpath("//select[@ng-reflect-name='Rpp']//option"));
+	this.priPvdTooltipElem = element(by.xpath("//select[@ng-reflect-name='Rpp']//ancestor::div[@class='form-group divWrapper']//span"))
+	this.secPvdDrdElem= element(by.xpath("//select[@ng-reflect-name='Sp']"));
+	this.secPvdDrdOptionsElem= element.all(by.xpath("//select[@ng-reflect-name='Sp']//option"));
+	this.refPvdDrdElem= element(by.xpath("//select[@ng-reflect-name='Rp']"));
+	this.refPvdDrdOptionsElem= element.all(by.xpath("//select[@ng-reflect-name='Rp']//option"));
+	
 
+	
+	
 	var self = this;
 
 	this.validateAllElementsOfDemographicsAccordion = function(){
 		expect(self.patientImgInDemographicsElem).toBeDefined();
 		expect(self.demographicsEditButtonElem).toBeDefined();
-		this.stateElem.element(by.css('option:checked')).getText().then(function(state){
+		this.stateDrdElem.element(by.css('option:checked')).getText().then(function(state){
 			expect(state).toEqual(' ALASKA');
 		})
 		
@@ -58,10 +96,9 @@ var patientDetails = function(){
 	//ADDRESS VALIDATOR
 
 	this.validateAlphaOrderStateList = function(){
-		basePage.sortAndCompareList(self.stateSelectListElem);
+		basePage.sortAndCompareList(self.stateDrdOptionsElem);
 	}
 	this.inputValidAddress = function() {
-		//this.demographicsEditButtonElem.click();
 		this.add1InputElem.sendKeys(constants.patientAddress[0]);
 		this.add2InputElem.sendKeys(constants.patientAddress[1]);
 		this.aptInputElem.sendKeys(constants.patientAddress[2]);
@@ -80,7 +117,6 @@ var patientDetails = function(){
 		element(by.cssContainingText('option', 'ALASKA')).click();		
 	}
 	this.validateWZipInput = function(){
-		this.demographicsEditButtonElem.click();
 		this.zipInputElem.sendKeys(constants.patientAddress[5]);
 		this.validateAddressButtonElem.click();
 		this.validatorMsgElem.isDisplayed().then(function() {
@@ -186,7 +222,7 @@ var patientDetails = function(){
 				expect(validated).toContain('Address Validated');
 			})
 		})
-		this.stateElem.element(by.css('option:checked')).getText().then(function(state){
+		this.stateDrdElem.element(by.css('option:checked')).getText().then(function(state){
 			expect(state).toEqual(constants.patientAddress[4]);
 		})
 		browser.sleep(4000);
@@ -228,7 +264,7 @@ var patientDetails = function(){
 				expect(validated).toContain('Invalid Address');
 			})
 		})
-		this.stateElem.element(by.css('option:checked')).getText().then(function(state){
+		this.stateDrdElem.element(by.css('option:checked')).getText().then(function(state){
 			expect(state).toEqual(' OHIO');
 		})
 		browser.sleep(4000);
@@ -444,7 +480,7 @@ var patientDetails = function(){
 		})
 		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.nickNameInputElem.clear().then(function(){
-			self.nickNameInputElem.sendKeys(constants.maxCharInput).then(function() {
+			self.nickNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
 				console.log('maximum');
 			})
 		})
@@ -456,11 +492,11 @@ var patientDetails = function(){
 			console.log('is not displayed');
 		})
 		this.nickNameInputElem.clear().then(function(){
-			self.nickNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
+			self.nickNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
 				console.log('More than Maximum Chars');
 			})
 		})
-		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
+		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for nick name.');
 		this.nickNameInputElem.clear().sendKeys(nickname);
 	}
 	
@@ -470,23 +506,120 @@ var patientDetails = function(){
 			expect(self.lastNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');
 			self.lastNameInputElem.sendKeys(name);
 		})
-		basePage.clearField(this.firstNameInputElem);
-		expect(self.firstNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');	
-		basePage.clearField(this.add1InputElem);
-		expect(self.add1TooltipElem.getAttribute("textContent")).toContain('This is a required field');
-		basePage.clearField(this.cityInputElem);
-		expect(self.cityTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-		basePage.clearField(this.patientCellPhnInputElem);
-		expect(self.pttCellPhnTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-		basePage.clearField(this.patientEmailInputElem);
-		expect(self.pttEmailTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-		basePage.clearField(this.emergncyCellPhnInputElem);
-		expect(self.emgyCellPhnTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		basePage.clearField(this.firstNameInputElem).then(function(name) {
+			expect(self.firstNameTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			self.firstNameInputElem.sendKeys(name);
+		})
+		basePage.clearField(this.add1InputElem).then(function(add1) {
+			expect(self.add1TooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			self.add1InputElem.sendKeys(add1);
+		})
+		basePage.clearField(this.cityInputElem).then(function(city) {
+			expect(self.cityTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			self.cityInputElem.sendKeys(city);
+		})
+		basePage.clearField(this.zipInputElem).then(function(zip) {
+			expect(self.zipTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			self.zipInputElem.sendKeys(zip);
+		})
+		basePage.clearField(this.patientCellPhnInputElem).then(function(cell) {
+			expect(self.pttCellPhnTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			self.patientCellPhnInputElem.sendKeys(cell);
+		})
+		basePage.clearField(this.patientEmailInputElem).then(function(email) {
+			expect(self.pttEmailTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			self.patientEmailInputElem.sendKeys(email);
+		})
+		var opt;
+		this.genderDrdElem.element(by.css('option:checked')).getText().then(function(text){
+			opt = text;
+			console.log(opt);		
+			basePage.clearDrd(self.genderDrdOptionsElem);
+			expect(self.genderTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			element(by.cssContainingText('option', opt)).click();
+		})
+		this.pttType1Elem.element(by.css('option:checked')).getText().then(function(text){
+			opt = text;
+			console.log(opt);		
+			basePage.clearDrd(self.pttType1OptionsElem);
+			expect(self.pttType1TooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			element(by.cssContainingText('option', opt)).click();
+		})
+		this.stateDrdElem.element(by.css('option:checked')).getText().then(function(text){
+			opt = text;
+			console.log(opt);		
+			basePage.clearDrd(self.stateDrdOptionsElem);
+			expect(self.stateTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			element(by.cssContainingText('option', opt)).click();
+		})
+		this.raceDrdElem.element(by.css('option:checked')).getText().then(function(text){
+			opt = text;
+			console.log(opt);		
+			basePage.clearDrd(self.raceDrdOptionsElem);
+			expect(self.raceTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			element(by.cssContainingText('option', opt)).click();
+		})
+		this.ethnicityDrdElem.element(by.css('option:checked')).getText().then(function(text){
+			opt = text;
+			console.log(opt);		
+			basePage.clearDrd(self.ethnicityDrdOptionsElem);
+			expect(self.ethnicityTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			element(by.cssContainingText('option', opt)).click();
+		})
+		this.languageDrdElem.element(by.css('option:checked')).getText().then(function(text){
+			opt = text;
+			console.log(opt);		
+			basePage.clearDrd(self.raceDrdOptionsElem);
+			expect(self.languageTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			element(by.cssContainingText('option', opt)).click();
+		})
+		this.priPvdDrdElem.element(by.css('option:checked')).getText().then(function(text){
+			opt = text;
+			console.log(opt);		
+			basePage.clearDrd(self.priPvdDrdOptionsElem);
+			expect(self.priPvdTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+			element(by.cssContainingText('option', opt)).click();
+		})	
 	}
 	
 	/*this.validateDOBField = function(){
 		basePage.DOBFieldValidator(self.DOBFieldElem);
 	}*/
+	
+	this.verifyPhoneFieldFormat = function(){
+		this.patientHomePhnInputElem.getAttribute('value').then(function(home) {
+			basePage.clearField(self.patientHomePhnInputElem);
+			self.patientHomePhnInputElem.sendKeys(constants.cellPhoneNumber);
+			basePage.verifyPhoneFormat(self.patientHomePhnInputElem,constants.cellPhoneNumber);
+			self.patientHomePhnInputElem.sendKeys(home);
+		})
+		this.patientWorkPhnInputElem.getAttribute('value').then(function(work) {
+			basePage.clearField(self.patientWorkPhnInputElem);
+			self.patientWorkPhnInputElem.sendKeys(constants.cellPhoneNumber);
+			basePage.verifyPhoneFormat(self.patientWorkPhnInputElem,constants.cellPhoneNumber);
+			self.patientWorkPhnInputElem.sendKeys(work);
+		})
+		this.patientCellPhnInputElem.getAttribute('value').then(function(cell) {
+			basePage.clearField(self.patientCellPhnInputElem);
+			self.patientCellPhnInputElem.sendKeys(constants.cellPhoneNumber);
+			basePage.verifyPhoneFormat(self.patientCellPhnInputElem,constants.cellPhoneNumber);
+			self.patientCellPhnInputElem.sendKeys(cell);
+		})
+		this.emergncyCellPhnInputElem.getAttribute('value').then(function(emCell) {
+			basePage.clearField(self.emergncyCellPhnInputElem);
+			self.emergncyCellPhnInputElem.sendKeys(constants.cellPhoneNumber);
+			basePage.verifyPhoneFormat(self.emergncyCellPhnInputElem,constants.cellPhoneNumber);
+			self.emergncyCellPhnInputElem.sendKeys(emCell);
+		})
+		this.familyPhnNumInputElem.each(function(elementLoc,index) {
+			elementLoc.getAttribute('value').then(function(fam) {
+				basePage.clearField(elementLoc);
+				elementLoc.sendKeys(constants.cellPhoneNumber);
+				basePage.verifyPhoneFormat(elementLoc,constants.cellPhoneNumber);
+				elementLoc.sendKeys(fam);
+			})
+		})
+	}
 
 }
 module.exports = new patientDetails();

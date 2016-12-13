@@ -17,7 +17,7 @@ describe('Daily view',function(){
 		schedulingMainScreen.verifyShowAll();
 		schedulingMainScreen.checkAProvider('AEC');
 	})
-	xit('should verify calendar elements',function(){
+	it('should verify calendar elements',function(){
 		schedulingMainScreen.calendaHeaderFooter();
 		schedulingMainScreen.navigateToDate();
 	})

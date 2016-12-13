@@ -11,7 +11,7 @@ var patientHubScreen = function(){
 	this.patientInfoLabelElem = element.all(by.xpath("(//section[@class='col-md-12 pt-hub-main-details']//div[@class='col-md-6'])//label"));
 	this.patientBalanceInfoElem = element.all(by.xpath("(//div[@class='patientHubLeft']//section[@class='col-md-12 color-section'])[1]//span"));
 	this.patientHubLabResultsLabelsElem = element.all(by.xpath("//div[@class='patientHubLeft']//div[@class='col-md-5 pt-hub-lab-results']//label"));
-	this.patientHubApptDetailsElem = element.all(by.xpath("(//div[@class='patientHubLeft']//div[@class='col-md-12'])[3]//span"));
+	this.patientHubApptDetailsElem = element.all(by.xpath("(//div[@class='patientHubLeft']//div[@class='col-md-12'])[2]//span"));
 	this.patientHubRightTabsElem = element.all(by.xpath("//div[@class='patientHubRight']//ul[@class='nav nav-tabs']/li"));
 
 	var self=this;
@@ -19,7 +19,7 @@ var patientHubScreen = function(){
 	this.validatePatientNameAndMRN = function(){
 		self.patientHubNameElem.getText().then(function(name){
 			var splitText = name.split(",");
-			var updatedName = splitText[0]+", "+splitText[1]
+			var updatedName = splitText[0]+","+splitText[1]
 			expect(self.nameHeaderInPatientHubElem.getText()).toContain(basePage.changeToUpperCase(updatedName));
 		})
 		self.patientInfoElem.get(0).getText().then(function(text){

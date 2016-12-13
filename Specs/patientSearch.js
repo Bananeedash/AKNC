@@ -36,15 +36,18 @@ describe('Verify Patient Search functionalities',function(){
 	})
 	
 	it('should verify dropdown options of Advanced Search fields',function(){
-		patientSearchScreen.validateDefaultAdvSrchDropdownOptions();		
+		patientSearchScreen.validateDefaultAdvSrchDropdownOptions();
+		patientSearchScreen.resetSearchFields();
 	})
 	it('should select an option in a dropdown and verify rest dropdowns',function(){
 		
 		patientSearchScreen.selectOptionInDrdAndVerifyRestDrds(patientSearchScreen.drpdwn5Elem,patientSearchScreen.drpdwn5OptionsElem,5,5);
+		patientSearchScreen.resetSearchFields();
 		
 	})
 	it('should search with advanced search options',function(){
 		patientSearchScreen.searchWithAdvSearchDrd();
+		patientSearchScreen.resetSearchFields();
 	})
 	it('should search using quick search bar',function(){
 		patientSearchScreen.searchWithQuickSearch(constants.quickSearchInputType1,constants.quickSearchFNInput,2);
@@ -58,7 +61,6 @@ describe('Verify Patient Search functionalities',function(){
 		
 	})
 	it('should verify functionality of reset link button',function(){
-		welcomePage.navigateToPatientModule();
 		patientSearchScreen.resetLinkFunctionality();
 	})
 	it('should verify that clicking on search results once navigates to patient details',function(){
@@ -66,7 +68,6 @@ describe('Verify Patient Search functionalities',function(){
 		patientSearchScreen.clickOnSearchresultNavToPatientHub(0);
 	})
 	it('should verify sorting of search results',function(){
-		welcomePage.navigateToPatientModule();
 		patientSearchScreen.validateSortingSearchResults();
 	})
 	

@@ -178,6 +178,23 @@ var basePage = function() {
 			day = 'SATURDAY';
 		return day;
 	}
+	this.verifyPhoneFormat = function(inputElem,input){
+		var phoneArray = input.split("");
+		inputElem.getAttribute('value').then(function(elem) {
+			/*console.log('('+phoneArray[0]+phoneArray[1]+phoneArray[2]+') '+phoneArray[3]+phoneArray[4]+phoneArray[5]+
+											'-'+phoneArray[6]+phoneArray[7]+phoneArray[8]+phoneArray[9]);
+			//console.log(elem);*/
+			expect(elem).toEqual('('+phoneArray[0]+phoneArray[1]+phoneArray[2]+') '+phoneArray[3]+phoneArray[4]+phoneArray[5]+
+					'-'+phoneArray[6]+phoneArray[7]+phoneArray[8]+phoneArray[9]);
+		})
+		
+	}
+	this.clearDrd = function(drdOptLoc){
+		browser.sleep(1000);
+		drdOptLoc.first().click();
+		browser.sleep(1000);	
+	}
+	
 	/*this.DOBFieldValidator = function(fieldLoc){
 		var date = new Date();
 		fieldLoc.sendKeys(constants.futureDate);
@@ -185,4 +202,4 @@ var basePage = function() {
 		
 	}*/
 }
-module.exports = new basePage();
+module.exports = new basePage()

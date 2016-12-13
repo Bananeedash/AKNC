@@ -231,7 +231,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_N_fvEHAyEeaYMvTxK-jRDw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_aIh9cHAyEeaWBN3yPoNcTA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_NMqkF3AyEeaYMvTxK-jRDw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_qhJggLx3Eea5jPNypRvEHQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_NMqkF3AyEeaYMvTxK-jRDw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_N_gWIHAyEeaYMvTxK-jRDw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -258,7 +258,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_N_gWJHAyEeaYMvTxK-jRDw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_aIm18HAyEeaWBN3yPoNcTA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_NMp8_HAyEeaYMvTxK-jRDw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_qhNx8Lx3Eea5jPNypRvEHQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_NMp8_HAyEeaYMvTxK-jRDw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_N_g9MHAyEeaYMvTxK-jRDw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -542,6 +542,7 @@
     <bindings xmi:id="_NO1HIHAyEeaYMvTxK-jRDw" keySequence="ALT+SHIFT+Q L" command="_NMpWAHAyEeaYMvTxK-jRDw">
       <parameters xmi:id="_NO1HIXAyEeaYMvTxK-jRDw" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.pde.runtime.LogView"/>
     </bindings>
+    <bindings xmi:id="_f_ITQLx3Eea_mNkDGygpkw" keySequence="ALT+SHIFT+Q N" command="_f9oecLx3Eea_mNkDGygpkw"/>
   </bindingTables>
   <bindingTables xmi:id="_NOOqMHAyEeaYMvTxK-jRDw" elementId="org.eclipse.tm.terminal.TerminalContext" bindingContext="_NM8Q6nAyEeaYMvTxK-jRDw">
     <bindings xmi:id="_NOOqMXAyEeaYMvTxK-jRDw" keySequence="ALT+D" command="_NMoHt3AyEeaYMvTxK-jRDw"/>
@@ -838,6 +839,10 @@
   <bindingTables xmi:id="_OWWv43AyEeaYMvTxK-jRDw" bindingContext="_OWWv4nAyEeaYMvTxK-jRDw"/>
   <bindingTables xmi:id="_OWWv5XAyEeaYMvTxK-jRDw" bindingContext="_OWWv5HAyEeaYMvTxK-jRDw"/>
   <bindingTables xmi:id="_OWXW8XAyEeaYMvTxK-jRDw" bindingContext="_OWXW8HAyEeaYMvTxK-jRDw"/>
+  <bindingTables xmi:id="_f-pyILx3Eea_mNkDGygpkw" elementId="org.sweetlemonade.eclipse.json.jsonEditorScope" bindingContext="_f9sv4Lx3Eea_mNkDGygpkw">
+    <bindings xmi:id="_f-tcgLx3Eea_mNkDGygpkw" keySequence="CTRL+SHIFT+F" command="_f9oecbx3Eea_mNkDGygpkw"/>
+    <bindings xmi:id="_f-30kLx3Eea_mNkDGygpkw" keySequence="CTRL+O" command="_f9n3Ybx3Eea_mNkDGygpkw"/>
+  </bindingTables>
   <rootContext xmi:id="_NKjrJHAyEeaYMvTxK-jRDw" elementId="org.eclipse.ui.contexts.dialogAndWindow" contributorURI="platform:/plugin/org.eclipse.platform" name="In Dialogs and Windows" description="Either a dialog or a window is open">
     <children xmi:id="_NKjrJXAyEeaYMvTxK-jRDw" elementId="org.eclipse.ui.contexts.window" contributorURI="platform:/plugin/org.eclipse.platform" name="In Windows" description="A window is open">
       <children xmi:id="_NKjrJnAyEeaYMvTxK-jRDw" elementId="org.eclipse.e4.ui.contexts.views" contributorURI="platform:/plugin/org.eclipse.platform" name="%bindingcontext.name.bindingView"/>
@@ -879,6 +884,7 @@
         </children>
         <children xmi:id="_NM8Q9XAyEeaYMvTxK-jRDw" elementId="org.eclipse.jdt.ui.propertiesEditorScope" name="Editing Properties Files" description="Editing Properties Files Context"/>
         <children xmi:id="_NM8Q93AyEeaYMvTxK-jRDw" elementId="org.eclipse.jst.jsf.facesconfig.editorContext" name="In Faces Config Editor" description="Key binding context when using the Faces Config Editor"/>
+        <children xmi:id="_f9sv4Lx3Eea_mNkDGygpkw" elementId="org.sweetlemonade.eclipse.json.jsonEditorScope" name="JSON editor"/>
       </children>
       <children xmi:id="_NM8QxHAyEeaYMvTxK-jRDw" elementId="org.eclipse.compare.compareEditorScope" name="Comparing in an Editor" description="Comparing in an Editor"/>
       <children xmi:id="_NM8QxnAyEeaYMvTxK-jRDw" elementId="org.eclipse.debug.ui.memoryview" name="In Memory View" description="In memory view"/>
@@ -2544,6 +2550,9 @@
   <commands xmi:id="_N283EHAyEeaYMvTxK-jRDw" elementId="AUTOGEN:::variableViewActions/org.eclipse.wst.jsdt.debug.ui.variableview.show.this" commandName="Show 'this' variable" description="Show or hide the this variable" category="_NMYQG3AyEeaYMvTxK-jRDw"/>
   <commands xmi:id="_N283EXAyEeaYMvTxK-jRDw" elementId="AUTOGEN:::variableViewActions/org.eclipse.wst.jsdt.debug.ui.variableview.show.prototypes" commandName="Show proto variables" description="Show or hide proto variables" category="_NMYQG3AyEeaYMvTxK-jRDw"/>
   <commands xmi:id="_N283EnAyEeaYMvTxK-jRDw" elementId="AUTOGEN:::org.eclipse.ui.articles.action.contribution.view/org.eclipse.wst.wsi.ui.internal.actions.actionDelegates.ValidateWSIProfileActionDelegate" commandName="WS-I Profile Validator" description="Validate WS-I Message Log File" category="_NMYQG3AyEeaYMvTxK-jRDw"/>
+  <commands xmi:id="_f9n3Ybx3Eea_mNkDGygpkw" elementId="org.sweetlemonade.eclipse.json.outline" commandName="Quick outline" category="_NMXpC3AyEeaYMvTxK-jRDw"/>
+  <commands xmi:id="_f9oecLx3Eea_mNkDGygpkw" elementId="org.sweetlemonade.eclipse.json.openEditor" commandName="New JSON Editor" category="_NMXpB3AyEeaYMvTxK-jRDw"/>
+  <commands xmi:id="_f9oecbx3Eea_mNkDGygpkw" elementId="org.sweetlemonade.eclipse.json.format" commandName="Format JSON" category="_NMXpAXAyEeaYMvTxK-jRDw"/>
   <addons xmi:id="_NKjrKHAyEeaYMvTxK-jRDw" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_NKjrKXAyEeaYMvTxK-jRDw" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_NKjrKnAyEeaYMvTxK-jRDw" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

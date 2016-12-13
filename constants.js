@@ -21,15 +21,15 @@ var constants = function() {
 	this.MSInput = 'DIVORCED';
 	this.MNInput = 'JUAN';
 	this.LNInput = 'FISHER';
-	this.MRNInput = '4';
+	this.MRNInput = '1000002';
 	this.quickSearchInputType1 = 'FN';
 	this.quickSearchInputType2 = 'LN';
 	this.quickSearchInputType3 = 'MRN';
 	this.quickSearchInputType4 = 'DOB';
 	this.quickSearchFNInput = 'john';
 	this.quickSearchLNInput = 'Mat';
-	this.quickSearchMRNInput = '70';
-	this.quickSearchDOBInput = '1/5/1963';
+	this.quickSearchMRNInput = '1000001';
+	this.quickSearchDOBInput = '01/05/1963';
 	
 	//PATIENT HUB SCREEN Constants
 	this.patientInfoLabels = [ 'MRN:','DOB:','AGE:','SEX:','ADDRESS:','CELL:','EMAIL:','ATTENDING PROVIDER:','SECONDARY PROVIDER:', 
@@ -43,8 +43,8 @@ var constants = function() {
 	this.splCharInput = '@@#$';
 	this.numericInput = '8148';
 	this.aphaNumericInput = 'ASD7854';
-	this.maxCharInput = 'abcdefhijklmnopqrstuvwxyzabcdefhijklmnopqrstuvwxyz';
-	this.gtThanMaxCharInput = 'abcdefhijklmnopqrstuvwxyzabcdefhijklmnopqrstuvwxyzz';
+	this.maxCharInput = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+	this.gtThanMaxCharInput = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
 	/*this.stateAlphabeticalList = ['-- SELECT --', 'ALABAMA', 'ALASKA', 'AMERICAN SAMOA', 'ARIZONA', 'ARKANSAS', 'CALIFORNIA', 'COLORADO', 'CONNECTICUT',
 	                              'DELAWARE', 'DISTRICT OF COLUMBIA', 'FEDERATED STATES OF MICRONESIA', 'FLORIDA', 'GEORGIA', 'GUAM', 'HAWAII', 'IDAHO', 
 	                              'ILLINOIS', 'INDIANA', 'IOWA', 'KANSAS', 'KENTUCKY', 'LOUISIANA', 'MAINE', 'MARSHALL ISLANDS', 'MARYLAND',

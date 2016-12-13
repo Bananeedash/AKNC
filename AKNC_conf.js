@@ -20,8 +20,9 @@ exports.config = {
     // protractor is called.
     specs: ['./Specs/*.js'],
     exclude: ['./Specs/baseSpec.js'],
-    //specs: ['./Specs/patientHubValidations.js','./Specs/patientSearch.js','./Specs/demographicsValidation.js','.Specs/schedulingDailyView.js'],
-    //specs: ['Specs/demographicsValidation.js'],
+    //specs: ['./Specs/patientHubValidations.js','./Specs/patientSearch.js','./Specs/demographicsValidation.js',
+    //		'.Specs/schedulingDailyView.js','.Specs/welcomeScreenValidation.js'],
+    //specs: ['Specs/welcomeScreenValidation.js'],
     
     allScriptsTimeout: 15000,
     //restartBrowserBetweenTests: true,

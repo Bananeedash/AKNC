@@ -14,6 +14,8 @@ var schedulingMainScreen = function(){
 	this.calenderFooterElement = element(by.xpath("//div[@id='calendar']/div[@class='k-footer']/a"));
 	this.calendarHeaderElement = element(by.xpath('(//div[@id="calendar"]/div[@class="k-header"]/a)[2]'));
 	this.columnDateHeaderElem = element.all(by.xpath("//span[@class='k-link k-nav-day']"));
+	this.schNavTab = element.all(by.xpath('//span[@class="nav-tab-content"]'));
+	this.navCloseButtons = element.all(by.xpath("//span[@class='nav-tab-content']/span[@class='t-close']"));
 	
 	var today = new Date;
 	var date = today.getDate();
@@ -57,10 +59,19 @@ var schedulingMainScreen = function(){
 	}
 	this.calendaHeaderFooter = function(){
 		expect(this.calendarHeaderElement.getText()).toEqual(month+" "+year);
-		expect(this.calenderFooterElement.getText()).toEqual(day+", "+month+" "+date+", "+year);
-		this.columnDateHeaderElem.each(function(elem,index) {
-			expect(elem.getText()).toContain(number+1+"/"+date);
-		})
+		if(date<10){
+			expect(this.calenderFooterElement.getText()).toEqual(day+", "+month+" 0"+date+", "+year);
+		}
+		else {
+			expect(this.calenderFooterElement.getText()).toEqual(day+", "+month+" "+date+", "+year);
+		}
+		/*this.columnDateHeaderElem.each(function(elem,index) {
+			if(date<10){
+				expect(elem.getText()).toContain(number+1+"/0"+date);
+			}
+			else
+				expect(elem.getText()).toContain(number+1+"/"+date);
+		})*/
 	}
 	this.navigateToDate = function(){
 		var calendarDate;
@@ -86,10 +97,7 @@ var schedulingMainScreen = function(){
 			
 		})
 		//browser.sleep(9000);
-		this.columnDateHeaderElem.each(function(colElem,index) {
-			//console.log("expectation");
-			expect(colElem.getText()).toContain(date1);
-		})
+		expect(this.schNavTab.get(0).getText()).toContain(date1);
 	}
 	this.checkAProvider = function(nameAbbr){
 		this.showAllChkBoxElem.click();
