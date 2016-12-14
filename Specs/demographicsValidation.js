@@ -19,7 +19,7 @@ describe('Demographics accordion',function(){
 	it('should verify the order of state options list',function(){
 		patientDetails.validateAlphaOrderStateList();
 	})
-	xit('should verify all mandatory fields',function(){
+	it('should verify all mandatory fields',function(){
 		patientDetails.verifyRequiredFields();
 	})
 	xit('should verify that error message is displayed when only zip is input',function(){
@@ -62,7 +62,9 @@ describe('Demographics accordion',function(){
 		patientDetails.lastNameFieldValidation();
 		patientDetails.firstNameFieldValidation();
 		patientDetails.nickNameFieldValidation();
+		patientDetails.validatePrvLastName();
 		patientDetails.verifyPhoneFieldFormat();
+		patientDetails.validateAddress1Field();
 	})
 	
 	

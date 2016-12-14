@@ -45,6 +45,8 @@ var patientDetails = function(){
 	this.DOBFieldElem = element(by.xpath("//input[@id='dob']"));
 	this.nickNameInputElem = element(by.xpath("//input[@ng-reflect-name='NickName']"));
 	this.nickNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='NickName']/ancestor::div[@class='divControl']//span"));
+	this.prvLastNameInputElem = element(by.xpath("//input[@ng-reflect-name='PrvLastName']"));
+	this.prvLastNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='PrvLastName']/ancestor::div[@class='divControl']//span"));
 	
 	//Drop-down elements
 	this.genderDrdElem = element(by.xpath("//select[@ng-reflect-name='Gender']"));
@@ -413,7 +415,7 @@ var patientDetails = function(){
 				console.log('More than Maximum Chars');
 			})
 		})
-		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for last name.');
+		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
 		this.lastNameInputElem.clear().sendKeys(lastname);
 	}
 	this.firstNameFieldValidation = function(){
@@ -454,7 +456,7 @@ var patientDetails = function(){
 				console.log('More than Maximum Chars');
 			})
 		})
-		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for first name.');
+		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
 		this.firstNameInputElem.clear().sendKeys(firstname);
 	}
 	
@@ -496,10 +498,109 @@ var patientDetails = function(){
 				console.log('More than Maximum Chars');
 			})
 		})
-		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Exceeded maximum allowed characters for nick name.');
+		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
 		this.nickNameInputElem.clear().sendKeys(nickname);
 	}
-	
+	this.validatePrvLastName = function(){
+		var prvLastname = this.prvLastNameInputElem.getAttribute('value');
+		var flag=0;
+		this.prvLastNameInputElem.clear().then(function(){
+			self.prvLastNameInputElem.sendKeys(constants.splCharInput).then(function() {
+				console.log('Special Char');
+			})			
+		})
+		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.prvLastNameInputElem.clear().then(function(){
+			self.prvLastNameInputElem.sendKeys(constants.numericInput).then(function() {
+				console.log('Numeric');
+			})
+		})
+		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.prvLastNameInputElem.clear().then(function(){
+			self.prvLastNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				console.log('Alphanumeric');
+			})
+		})
+		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.prvLastNameInputElem.clear().then(function(){
+			self.prvLastNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+				console.log('maximum');
+			})
+		})
+		this.prvLastNameTooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.prvLastNameInputElem.clear().then(function(){
+			self.prvLastNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+				console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
+		this.prvLastNameInputElem.clear().sendKeys(prvLastname);
+	}
+	self.validateAddress1Field = function(){
+		var add1 = this.add1InputElem.getAttribute('value');
+		var flag=0;
+		this.add1InputElem.clear().then(function(){
+			self.add1InputElem.sendKeys(constants.splCharInput).then(function() {
+				console.log('Special Char');
+			})			
+		})
+		this.add1TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.add1InputElem.clear().then(function(){
+			self.add1InputElem.sendKeys(constants.numericInput).then(function() {
+				console.log('Numeric');
+			})
+		})
+		this.add1TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.add1InputElem.clear().then(function(){
+			self.add1InputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				console.log('Alphanumeric');
+			})
+		})
+		this.add1TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.add1InputElem.clear().then(function(){
+			self.add1InputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+				console.log('maximum');
+			})
+		})
+		this.add1TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.add1InputElem.clear().then(function(){
+			self.add1InputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+				console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.add1TooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
+		this.add1InputElem.clear().sendKeys(add1);
+	}
 	
 	this.verifyRequiredFields = function(){
 		basePage.clearField(this.lastNameInputElem).then(function(name) {
