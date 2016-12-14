@@ -637,49 +637,49 @@ var patientDetails = function(){
 			console.log(opt);		
 			basePage.clearDrd(self.genderDrdOptionsElem);
 			expect(self.genderTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-			element(by.cssContainingText('option', opt)).click();
+			self.genderDrdElem.element(by.cssContainingText('option', opt)).click();
 		})
 		this.pttType1Elem.element(by.css('option:checked')).getText().then(function(text){
 			opt = text;
 			console.log(opt);		
 			basePage.clearDrd(self.pttType1OptionsElem);
 			expect(self.pttType1TooltipElem.getAttribute("textContent")).toContain('This is a required field');
-			element(by.cssContainingText('option', opt)).click();
+			self.pttType1Elem.element(by.cssContainingText('option', opt)).click();
 		})
 		this.stateDrdElem.element(by.css('option:checked')).getText().then(function(text){
 			opt = text;
 			console.log(opt);		
 			basePage.clearDrd(self.stateDrdOptionsElem);
 			expect(self.stateTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-			element(by.cssContainingText('option', opt)).click();
+			self.stateDrdElem.element(by.cssContainingText('option', opt)).click();
 		})
 		this.raceDrdElem.element(by.css('option:checked')).getText().then(function(text){
 			opt = text;
 			console.log(opt);		
 			basePage.clearDrd(self.raceDrdOptionsElem);
 			expect(self.raceTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-			element(by.cssContainingText('option', opt)).click();
+			self.raceDrdElem.element(by.cssContainingText('option', opt)).click();
 		})
 		this.ethnicityDrdElem.element(by.css('option:checked')).getText().then(function(text){
 			opt = text;
 			console.log(opt);		
 			basePage.clearDrd(self.ethnicityDrdOptionsElem);
 			expect(self.ethnicityTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-			element(by.cssContainingText('option', opt)).click();
+			self.ethnicityDrdElem.element(by.cssContainingText('option', opt)).click();
 		})
 		this.languageDrdElem.element(by.css('option:checked')).getText().then(function(text){
 			opt = text;
 			console.log(opt);		
 			basePage.clearDrd(self.raceDrdOptionsElem);
 			expect(self.languageTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-			element(by.cssContainingText('option', opt)).click();
+			self.languageDrdElem.element(by.cssContainingText('option', opt)).click();
 		})
 		this.priPvdDrdElem.element(by.css('option:checked')).getText().then(function(text){
 			opt = text;
 			console.log(opt);		
 			basePage.clearDrd(self.priPvdDrdOptionsElem);
 			expect(self.priPvdTooltipElem.getAttribute("textContent")).toContain('This is a required field');
-			element(by.cssContainingText('option', opt)).click();
+			self.priPvdDrdElem.element(by.cssContainingText('option', opt)).click();
 		})	
 	}
 	
