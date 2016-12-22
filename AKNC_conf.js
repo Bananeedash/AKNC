@@ -22,7 +22,7 @@ exports.config = {
     exclude: ['./Specs/baseSpec.js'],
     //specs: ['./Specs/patientHubValidations.js','./Specs/patientSearch.js','./Specs/demographicsValidation.js',
     //		'.Specs/schedulingDailyView.js','.Specs/welcomeScreenValidation.js'],
-    //specs: ['Specs/demographicsValidation.js'],
+    specs: ['Specs/demographicsValidation.js'],
     
     allScriptsTimeout: 15000,
     //restartBrowserBetweenTests: true,

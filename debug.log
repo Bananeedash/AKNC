@@ -4,3 +4,9 @@
 [0914/183702:ERROR:process_reader_win.cc(114)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights.  (0xc0000022)
 [0914/183702:ERROR:exception_snapshot_win.cc(88)] thread ID 6316 not found in process
 [0914/183702:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::InitializeException failed
+[1215/143237:ERROR:process_info.cc(608)] range at 0xca2927f800000000, size 0x72 fully unreadable
+[1215/143237:ERROR:process_info.cc(608)] range at 0xca29281800000000, size 0x72 fully unreadable
+[1215/143237:ERROR:process_info.cc(608)] range at 0x0, size 0x72 fully unreadable
+[1215/145447:ERROR:process_info.cc(608)] range at 0x6a9427f800000000, size 0xbf fully unreadable
+[1215/145447:ERROR:process_info.cc(608)] range at 0x6a94281800000000, size 0xbf fully unreadable
+[1215/145447:ERROR:process_info.cc(608)] range at 0x0, size 0xbf fully unreadable

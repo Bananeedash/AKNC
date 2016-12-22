@@ -22,40 +22,40 @@ describe('Demographics accordion',function(){
 	it('should verify all mandatory fields',function(){
 		patientDetails.verifyRequiredFields();
 	})
-	xit('should verify that error message is displayed when only zip is input',function(){
+	it('should verify that error message is displayed when only zip is input',function(){
 		patientDetails.validateWZipInput();
 	})
-	xit('should verify that error message is displayed when zip and respective state is input',function(){
+	it('should verify that error message is displayed when zip and respective state is input',function(){
 		patientDetails.validateWZipAndStateInput();
 	})
-	xit('should verify that error message is displayed when city, state and respective zip is input',function(){
+	it('should verify that error message is displayed when city, state and respective zip is input',function(){
 		patientDetails.validateWCityStateZipInput();
 	})
-	xit('should verify that error message is displayed when both city and zip are left blank',function(){
+	it('should verify that error message is displayed when both city and zip are left blank',function(){
 		patientDetails.validateAddressWoZipAndState();
 	})
-	xit('should verify patient address validator',function(){
+	it('should verify patient address validator',function(){
 		patientDetails.verifyAddressValidator();
 	})
-	xit('should verify validator behavior when zip and plus4 fields are left blank',function(){
+	it('should verify validator behavior when zip and plus4 fields are left blank',function(){
 		patientDetails.verifyAddrsValidatorWithoutZip();
 	})
-	xit('should verify validator behavior when City field is left blank',function(){
+	it('should verify validator behavior when City field is left blank',function(){
 		patientDetails.verifyAddrsValidatorWithoutCity();
 	})
-	xit('should verify validator behavior when invalid state is selected',function(){
+	it('should verify validator behavior when invalid state is selected',function(){
 		patientDetails.verifyAddrsValidatorWithInvState();
 	})
-	xit('should verify Address 2 field can be left blank',function(){
+	it('should verify Address 2 field can be left blank',function(){
 		patientDetails.verifyAddrs2Blank();
 	})
-	xit('should verify APT field can be left blank',function(){
+	it('should verify APT field can be left blank',function(){
 		patientDetails.verifyAptBlank();
 	})
-	xit('should verify behaviour of sms pop-up',function(){
+	it('should verify behaviour of sms pop-up',function(){
 		patientDetails.validateSMSPopUp();
 	})
-	xit('should verify behaviour of Resend invite button',function(){
+	it('should verify behaviour of Resend invite button',function(){
 		patientDetails.validateResendInvite();
 	})
 	it('should validate all free input fields',function(){
@@ -65,6 +65,8 @@ describe('Demographics accordion',function(){
 		patientDetails.validatePrvLastName();
 		patientDetails.verifyPhoneFieldFormat();
 		patientDetails.validateAddress1Field();
+		patientDetails.validateAPT();
+		//patientDetails.validateCity();
 	})
 	
 	

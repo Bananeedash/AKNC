@@ -55,7 +55,7 @@ var constants = function() {
 	                              'WYOMING' ];*/
 	this.patientAddress = ['1950 NE Burnside Rd','Drop at the gate','2C','Gresham',' OREGON','97030','7949'];
 	
-	this.cellPhoneNumber = '8582217576';
+	this.cellPhoneNumber = '3433441267';
 	this.futureDate = '01/02/2020';
 	
 	//SCHEDULING CONSTANTS

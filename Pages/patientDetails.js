@@ -13,11 +13,12 @@ var patientDetails = function(){
 	this.add1InputElem = element(by.xpath("//input[@id='add1']"));
 	this.add1TooltipElem = element(by.xpath("//input[@id='add1']/ancestor::div[@class='divControl']//span"));
 	this.add2InputElem = element(by.xpath("//ul[@class='step-one']//input[@id='add2']"));
-	this.aptInputElem = element(by.xpath("//ul[@class='step-one']//input[@ng-reflect-name='Apt']"));
+	this.aptInputElem = element(by.xpath("//input[@ng-reflect-name='Apt']"));
+	this.aptTooltipElem = element(by.xpath("//input[@ng-reflect-name='Apt']/ancestor::div[@class='divControl']//span"));
 	this.cityInputElem = element(by.xpath("//ul[@class='step-one']//input[@id='city']"));
 	this.cityTooltipElem = element(by.xpath("//input[@id='city']/ancestor::div[@class='divControl']//span"));
 	this.zipInputElem = element(by.xpath("//ul[@class='step-one']//input[@id='zip']"));
-	this.zipTooltipElem = element(by.xpath("//ul[@class='step-one']//input[@id='zip']/ancestor::div[@class='divControl']//span"))
+	this.zipTooltipElem = element(by.xpath("//input[@id='zip']/ancestor::div[@class='subDivControl']//span"))
 	this.plus4InputElem = element(by.xpath("//ul[@class='step-one']//input[@id='plus4']"));
 	this.validateAddressButtonElem = element(by.xpath("//ul[@class='step-one']//button[@id='validateAddress']"));
 	this.validatorMsgElem = element(by.xpath("//div[@class='k-notification-wrap']"));
@@ -29,8 +30,8 @@ var patientDetails = function(){
 	this.emgyCellPhnTooltipElem = element(by.xpath("(//input[@ng-reflect-name='CellPhone'])[2]/ancestor::div[@class='divControl']//span"));
 	this.familyPhnNumInputElem = element.all(by.xpath("//input[@ng-reflect-name='PhoneNumber']")); 
 	this.smsButtonElem = element.all(by.buttonText('SMS'));
-	this.smsPopUpWindowElem = element(by.xpath('//div[@id="windowHolderSendSmsPopup"]'));
-	this.smsPopUpWinHeaderElem = element(by.xpath('//span[@id="windowHolderSendSmsPopup_wnd_title"]'));
+	this.smsPopUpWindowElem = element(by.xpath('//div[@id="SendSmsPopup"]'));
+	this.smsPopUpWinHeaderElem = element(by.xpath('//span[@id="SendSmsPopup_wnd_title"]'));
 	this.phnFieldSMSPopUpElem = element(by.xpath('//input[@id="smsPopupCell"]'));
 	this.smsContentTextboxElem = element(by.xpath('//textarea[@id="messageContent"]'));
 	this.sendSMSButtonElem = element(by.xpath('//button[@id="sendSms"]'));
@@ -105,9 +106,9 @@ var patientDetails = function(){
 		this.add2InputElem.sendKeys(constants.patientAddress[1]);
 		this.aptInputElem.sendKeys(constants.patientAddress[2]);
 		this.cityInputElem.sendKeys(constants.patientAddress[3]);
-		element(by.cssContainingText('option', constants.patientAddress[4])).click();
+		this.stateDrdElem.element(by.cssContainingText('option', constants.patientAddress[4])).click();
 		this.zipInputElem.sendKeys(constants.patientAddress[5]);
-		this.plus4InputElem.sendKeys(constants.patientAddress[6]);
+		//this.plus4InputElem.sendKeys(constants.patientAddress[6]);
 	}
 	this.clearAllAddressFields = function(){
 		this.add1InputElem.clear();
@@ -115,7 +116,7 @@ var patientDetails = function(){
 		this.aptInputElem.clear();
 		this.cityInputElem.clear();
 		this.zipInputElem.clear();
-		this.plus4InputElem.clear();
+		//this.plus4InputElem.clear();
 		element(by.cssContainingText('option', 'ALASKA')).click();		
 	}
 	this.validateWZipInput = function(){
@@ -132,7 +133,7 @@ var patientDetails = function(){
 	}
 	
 	this.validateWZipAndStateInput = function(){
-		element(by.cssContainingText('option', constants.patientAddress[4])).click();
+		this.stateDrdElem.element(by.cssContainingText('option', constants.patientAddress[4])).click();
 		this.validateAddressButtonElem.click();
 		this.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(validated) {
@@ -178,7 +179,7 @@ var patientDetails = function(){
 				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
 			}
 		})*/
-		basePage.clearField(this.plus4InputElem);
+		//basePage.clearField(this.plus4InputElem);
 		/*this.plus4InputElem.click().then(function() {
 			console.log('clear +4 input');
 			for(var i=0;i<10;i++){
@@ -216,7 +217,7 @@ var patientDetails = function(){
 		browser.sleep(4000);
 	}
 	this.verifyAddrsValidatorWithInvState = function(){
-		element(by.cssContainingText('option', 'WASHINGTON')).click();
+		this.stateDrdElem.element(by.cssContainingText('option', 'WASHINGTON')).click();
 		this.validateAddressButtonElem.click();
 		this.validatorMsgElem.isDisplayed().then(function() {
 			self.validatorMsgElem.getText().then(function(validated) {
@@ -233,7 +234,7 @@ var patientDetails = function(){
 	this.validateAddressWoZipAndState = function(){
 		this.clearAllAddressFields();
 		this.inputValidAddress();
-		element(by.cssContainingText('option', 'OHIO')).click();
+		this.stateDrdElem.element(by.cssContainingText('option', 'OHIO')).click();
 		browser.sleep(5000);
 		basePage.clearField(this.zipInputElem);
 		/*this.zipInputElem.click().then(function() {
@@ -243,14 +244,14 @@ var patientDetails = function(){
 			}
 		})*/
 		browser.sleep(2000);
-		basePage.clearField(this.plus4InputElem);
+		//basePage.clearField(this.plus4InputElem);
 		/*this.plus4InputElem.click().then(function() {
 			console.log('clear +4 input');
 			for(var i=0;i<10;i++){
 				browser.actions().sendKeys(protractor.Key.BACK_SPACE).perform();
 			}
 		})*/
-		browser.sleep(2000);
+		//browser.sleep(2000);
 		basePage.clearField(this.cityInputElem);
 		/*this.cityInputElem.click().then(function() {
 			console.log('clear city input');
@@ -319,7 +320,7 @@ var patientDetails = function(){
 			self.validatorMsgElem.isDisplayed().then(function() {
 				self.validatorMsgElem.getText().then(function(message) {
 					console.log(message);
-					expect(message).toContain('Please enter cell phone number');
+					expect(message).toContain('Enter Cell Phone Number');
 				})
 			})
 			browser.sleep(4000);
@@ -523,7 +524,7 @@ var patientDetails = function(){
 		})
 		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.prvLastNameInputElem.clear().then(function(){
-			self.prvLastNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+			self.prvLastNameInputElem.sendKeys(constants.maxCharInput).then(function() {
 				console.log('maximum');
 			})
 		})
@@ -535,14 +536,14 @@ var patientDetails = function(){
 			console.log('is not displayed');
 		})
 		this.prvLastNameInputElem.clear().then(function(){
-			self.prvLastNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+			self.prvLastNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
 				console.log('More than Maximum Chars');
 			})
 		})
-		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
+		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
 		this.prvLastNameInputElem.clear().sendKeys(prvLastname);
 	}
-	self.validateAddress1Field = function(){
+	this.validateAddress1Field = function(){
 		var add1 = this.add1InputElem.getAttribute('value');
 		var flag=0;
 		this.add1InputElem.clear().then(function(){
@@ -582,7 +583,7 @@ var patientDetails = function(){
 			console.log('is not displayed');
 		})
 		this.add1InputElem.clear().then(function(){
-			self.add1InputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+			self.add1InputElem.sendKeys(constants.maxCharInput).then(function() {
 				console.log('maximum');
 			})
 		})
@@ -594,12 +595,66 @@ var patientDetails = function(){
 			console.log('is not displayed');
 		})
 		this.add1InputElem.clear().then(function(){
-			self.add1InputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
+			self.add1InputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
 				console.log('More than Maximum Chars');
 			})
 		})
-		expect(this.add1TooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
+		expect(this.add1TooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
 		this.add1InputElem.clear().sendKeys(add1);
+	}
+	
+	this.validateAPT = function(){
+		var apt = this.aptInputElem.getAttribute('value');
+		var flag=0;
+		this.aptInputElem.clear().then(function(){
+			self.aptInputElem.sendKeys(constants.splCharInput).then(function() {
+				console.log('Special Char');
+			})			
+		})
+		expect(this.aptTooltipElem.getAttribute("textContent")).toContain('Special characters are not allowed.');
+		this.aptInputElem.clear().then(function(){
+			self.aptInputElem.sendKeys(constants.numericInput).then(function() {
+				console.log('Numeric');
+			})
+		})
+		this.aptTooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.aptInputElem.clear().then(function(){
+			self.aptInputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				console.log('Alphanumeric');
+			})
+		})
+		this.aptTooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.aptInputElem.clear().then(function(){
+			self.aptInputElem.sendKeys('AAAAAAAAAA').then(function() {  //10 chars
+				console.log('maximum');
+			})
+		})
+		this.aptTooltipElem.isDisplayed().then(function() {  //11 chars
+			expect(flag).toEqual(1);
+			console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			console.log('is not displayed');
+		})
+		this.aptInputElem.clear().then(function(){
+			self.aptInputElem.sendKeys('AAAAAAAAAAA').then(function() {
+				console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.aptTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 10.');
+		this.aptInputElem.clear().sendKeys(apt);
 	}
 	
 	this.verifyRequiredFields = function(){
