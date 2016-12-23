@@ -22,6 +22,8 @@ var patientDetails = function(){
 	this.plus4InputElem = element(by.xpath("//ul[@class='step-one']//input[@id='plus4']"));
 	this.validateAddressButtonElem = element(by.xpath("//ul[@class='step-one']//button[@id='validateAddress']"));
 	this.validatorMsgElem = element(by.xpath("//div[@class='k-notification-wrap']"));
+	this.resendInviteInfoElem = element(by.xpath("//div[@class='k-widget k-notification k-notification-info k-popup k-group k-reset k-state-border-up']//div[@class='k-notification-wrap']"));
+	this.resendInviteSuccessElem = element(by.xpath("//div[@class='k-widget k-notification k-notification-success k-popup k-group k-reset k-state-border-up']//div[@class='k-notification-wrap']"));
 	this.patientHomePhnInputElem = element(by.xpath('//input[@ng-reflect-name="HomePhone"]'));
 	this.patientWorkPhnInputElem = element(by.xpath('//input[@ng-reflect-name="WorkPhone"]'));
 	this.patientCellPhnInputElem = element(by.xpath('//input[@id="cellPhone"]'));
@@ -356,25 +358,26 @@ var patientDetails = function(){
 	//RESEND INVITE
 	this.validateResendInvite = function(){
 		//expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('This is a required field');
+		this.message = [];
 		this.patientEmailInputElem.sendKeys('abcdefgh');
 		expect(this.invalidEmailTooltipElem.getAttribute("textContent")).toContain('Invalid email');
 		basePage.clearField(this.patientEmailInputElem);
 		this.patientEmailInputElem.sendKeys('bananee.dash@mindfiresolutions.com');
 		this.resendInviteButtonElem.click();
-		self.validatorMsgElem.isDisplayed().then(function() {
-			self.validatorMsgElem.getText().then(function(message) {
-				console.log(message);
-				expect(message).toContain('Sending Email');
+		self.resendInviteInfoElem.isDisplayed().then(function() {
+			self.resendInviteInfoElem.getText().then(function(msg) {
+				console.log(msg);
+				expect(msg).toContain('Sending Email');
 				browser.sleep(2000);
-				self.validatorMsgElem.isDisplayed().then(function() {
-					self.validatorMsgElem.getText().then(function(message1) {
-						console.log(message1);
-						expect(message1).toContain('Email Sent Successfully');
-					})
-				})
 			})
 		})
-		browser.sleep(2000);
+		self.resendInviteSuccessElem.isDisplayed().then(function() {
+			self.resendInviteSuccessElem.getText().then(function(message1) {
+				console.log(message1);
+				expect(message1).toContain('Email Sent Successfully');
+				browser.sleep(2000);
+			})
+		})
 	}
 	
 	//REQUIRED FIELDS VALIDATION
