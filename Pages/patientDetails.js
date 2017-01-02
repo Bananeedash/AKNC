@@ -13,6 +13,7 @@ var patientDetails = function(){
 	this.add1InputElem = element(by.xpath("//input[@id='add1']"));
 	this.add1TooltipElem = element(by.xpath("//input[@id='add1']/ancestor::div[@class='divControl']//span"));
 	this.add2InputElem = element(by.xpath("//ul[@class='step-one']//input[@id='add2']"));
+	this.add2TooltipElem = element(by.xpath("//input[@id='add2']/ancestor::div[@class='divControl']//span"));
 	this.aptInputElem = element(by.xpath("//input[@ng-reflect-name='Apt']"));
 	this.aptTooltipElem = element(by.xpath("//input[@ng-reflect-name='Apt']/ancestor::div[@class='divControl']//span"));
 	this.cityInputElem = element(by.xpath("//ul[@class='step-one']//input[@id='city']"));
@@ -364,12 +365,12 @@ var patientDetails = function(){
 		basePage.clearField(this.patientEmailInputElem);
 		this.patientEmailInputElem.sendKeys('bananee.dash@mindfiresolutions.com');
 		this.resendInviteButtonElem.click();
-		self.resendInviteInfoElem.isDisplayed().then(function() {
-			self.resendInviteInfoElem.getText().then(function(msg) {
+		var EC = protractor.ExpectedConditions;
+        browser.wait(EC.visibilityOf(this.resendInviteInfoElem));
+		self.resendInviteInfoElem.getText().then(function(msg) {
 				console.log(msg);
 				expect(msg).toContain('Sending Email');
 				browser.sleep(2000);
-			})
 		})
 		self.resendInviteSuccessElem.isDisplayed().then(function() {
 			self.resendInviteSuccessElem.getText().then(function(message1) {
@@ -386,37 +387,37 @@ var patientDetails = function(){
 		var flag=0;
 		this.lastNameInputElem.clear().then(function(){
 			self.lastNameInputElem.sendKeys(constants.splCharInput).then(function() {
-				console.log('Special Char');
+				//console.log('Special Char');
 			})			
 		})
 		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.lastNameInputElem.clear().then(function(){
 			self.lastNameInputElem.sendKeys(constants.numericInput).then(function() {
-				console.log('Numeric');
+				//console.log('Numeric');
 			})
 		})
 		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.lastNameInputElem.clear().then(function(){
 			self.lastNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
-				console.log('Alphanumeric');
+				//console.log('Alphanumeric');
 			})
 		})
 		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.lastNameInputElem.clear().then(function(){
 			self.lastNameInputElem.sendKeys(constants.maxCharInput).then(function() {
-				console.log('maximum');
+				//console.log('maximum');
 			})
 		})
 		this.lastNameTooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.lastNameInputElem.clear().then(function(){
 			self.lastNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
-				console.log('More than Maximum Chars');
+				//console.log('More than Maximum Chars');
 			})
 		})
 		expect(this.lastNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
@@ -427,37 +428,37 @@ var patientDetails = function(){
 		var flag=0;
 		this.firstNameInputElem.clear().then(function(){
 			self.firstNameInputElem.sendKeys(constants.splCharInput).then(function() {
-				console.log('Special Char');
+				//console.log('Special Char');
 			})			
 		})
 		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.firstNameInputElem.clear().then(function(){
 			self.firstNameInputElem.sendKeys(constants.numericInput).then(function() {
-				console.log('Numeric');
+				//console.log('Numeric');
 			})
 		})
 		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.firstNameInputElem.clear().then(function(){
 			self.firstNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
-				console.log('Alphanumeric');
+				//console.log('Alphanumeric');
 			})
 		})
 		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.firstNameInputElem.clear().then(function(){
 			self.firstNameInputElem.sendKeys(constants.maxCharInput).then(function() {
-				console.log('maximum');
+				//console.log('maximum');
 			})
 		})
 		this.firstNameTooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.firstNameInputElem.clear().then(function(){
 			self.firstNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
-				console.log('More than Maximum Chars');
+				//console.log('More than Maximum Chars');
 			})
 		})
 		expect(this.firstNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
@@ -469,37 +470,37 @@ var patientDetails = function(){
 		var flag=0;
 		this.nickNameInputElem.clear().then(function(){
 			self.nickNameInputElem.sendKeys(constants.splCharInput).then(function() {
-				console.log('Special Char');
+				//console.log('Special Char');
 			})			
 		})
 		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.nickNameInputElem.clear().then(function(){
 			self.nickNameInputElem.sendKeys(constants.numericInput).then(function() {
-				console.log('Numeric');
+				//console.log('Numeric');
 			})
 		})
 		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.nickNameInputElem.clear().then(function(){
 			self.nickNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
-				console.log('Alphanumeric');
+				//console.log('Alphanumeric');
 			})
 		})
 		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.nickNameInputElem.clear().then(function(){
 			self.nickNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
-				console.log('maximum');
+				//console.log('maximum');
 			})
 		})
 		this.nickNameTooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.nickNameInputElem.clear().then(function(){
 			self.nickNameInputElem.sendKeys('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA').then(function() {
-				console.log('More than Maximum Chars');
+				//console.log('More than Maximum Chars');
 			})
 		})
 		expect(this.nickNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 50.');
@@ -510,37 +511,37 @@ var patientDetails = function(){
 		var flag=0;
 		this.prvLastNameInputElem.clear().then(function(){
 			self.prvLastNameInputElem.sendKeys(constants.splCharInput).then(function() {
-				console.log('Special Char');
+				//console.log('Special Char');
 			})			
 		})
 		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.prvLastNameInputElem.clear().then(function(){
 			self.prvLastNameInputElem.sendKeys(constants.numericInput).then(function() {
-				console.log('Numeric');
+				//console.log('Numeric');
 			})
 		})
 		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.prvLastNameInputElem.clear().then(function(){
 			self.prvLastNameInputElem.sendKeys(constants.aphaNumericInput).then(function() {
-				console.log('Alphanumeric');
+				//console.log('Alphanumeric');
 			})
 		})
 		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
 		this.prvLastNameInputElem.clear().then(function(){
 			self.prvLastNameInputElem.sendKeys(constants.maxCharInput).then(function() {
-				console.log('maximum');
+				//console.log('maximum');
 			})
 		})
 		this.prvLastNameTooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.prvLastNameInputElem.clear().then(function(){
 			self.prvLastNameInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
-				console.log('More than Maximum Chars');
+				//console.log('More than Maximum Chars');
 			})
 		})
 		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
@@ -551,59 +552,118 @@ var patientDetails = function(){
 		var flag=0;
 		this.add1InputElem.clear().then(function(){
 			self.add1InputElem.sendKeys(constants.splCharInput).then(function() {
-				console.log('Special Char');
+				//console.log('Special Char');
 			})			
 		})
 		this.add1TooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
 			console.log('is not displayed');
 		})
 		this.add1InputElem.clear().then(function(){
 			self.add1InputElem.sendKeys(constants.numericInput).then(function() {
-				console.log('Numeric');
+				//console.log('Numeric');
 			})
 		})
 		this.add1TooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.add1InputElem.clear().then(function(){
 			self.add1InputElem.sendKeys(constants.aphaNumericInput).then(function() {
-				console.log('Alphanumeric');
+				//console.log('Alphanumeric');
 			})
 		})
 		this.add1TooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.add1InputElem.clear().then(function(){
 			self.add1InputElem.sendKeys(constants.maxCharInput).then(function() {
-				console.log('maximum');
+				//console.log('maximum');
 			})
 		})
 		this.add1TooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.add1InputElem.clear().then(function(){
 			self.add1InputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
-				console.log('More than Maximum Chars');
+				//console.log('More than Maximum Chars');
 			})
 		})
 		expect(this.add1TooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
 		this.add1InputElem.clear().sendKeys(add1);
+	}
+	this.validateAddress2Field = function(){
+		var add2 = this.add2InputElem.getAttribute('value');
+		var flag=0;
+		this.add2InputElem.clear().then(function(){
+			self.add2InputElem.sendKeys(constants.splCharInput).then(function() {
+				//console.log('Special Char');
+			})			
+		})
+		this.add2TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			//console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			//console.log('is not displayed');
+		})
+		this.add2InputElem.clear().then(function(){
+			self.add2InputElem.sendKeys(constants.numericInput).then(function() {
+				//console.log('Numeric');
+			})
+		})
+		this.add2TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			//console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			//console.log('is not displayed');
+		})
+		this.add2InputElem.clear().then(function(){
+			self.add2InputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				//console.log('Alphanumeric');
+			})
+		})
+		this.add2TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			//console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			//console.log('is not displayed');
+		})
+		this.add2InputElem.clear().then(function(){
+			self.add2InputElem.sendKeys(constants.charInput150).then(function() {
+				//console.log('maximum');
+			})
+		})
+		this.add2TooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			//console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			//console.log('is not displayed');
+		})
+		this.add2InputElem.clear().then(function(){
+			self.add2InputElem.sendKeys(constants.charInput151).then(function() {
+				console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.add2TooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 150.');
+		this.add2InputElem.clear().sendKeys(add2);
 	}
 	
 	this.validateAPT = function(){
@@ -611,49 +671,49 @@ var patientDetails = function(){
 		var flag=0;
 		this.aptInputElem.clear().then(function(){
 			self.aptInputElem.sendKeys(constants.splCharInput).then(function() {
-				console.log('Special Char');
+				//console.log('Special Char');
 			})			
 		})
 		expect(this.aptTooltipElem.getAttribute("textContent")).toContain('Special characters are not allowed.');
 		this.aptInputElem.clear().then(function(){
 			self.aptInputElem.sendKeys(constants.numericInput).then(function() {
-				console.log('Numeric');
+				//console.log('Numeric');
 			})
 		})
 		this.aptTooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.aptInputElem.clear().then(function(){
 			self.aptInputElem.sendKeys(constants.aphaNumericInput).then(function() {
-				console.log('Alphanumeric');
+				//console.log('Alphanumeric');
 			})
 		})
 		this.aptTooltipElem.isDisplayed().then(function() {
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.aptInputElem.clear().then(function(){
 			self.aptInputElem.sendKeys('AAAAAAAAAA').then(function() {  //10 chars
-				console.log('maximum');
+				//console.log('maximum');
 			})
 		})
 		this.aptTooltipElem.isDisplayed().then(function() {  //11 chars
 			expect(flag).toEqual(1);
-			console.log('is displayed');
+			//console.log('is displayed');
 		},function(){
 			expect(flag).toEqual(0);
-			console.log('is not displayed');
+			//console.log('is not displayed');
 		})
 		this.aptInputElem.clear().then(function(){
 			self.aptInputElem.sendKeys('AAAAAAAAAAA').then(function() {
-				console.log('More than Maximum Chars');
+				//console.log('More than Maximum Chars');
 			})
 		})
 		expect(this.aptTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 10.');

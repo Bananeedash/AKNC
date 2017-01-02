@@ -24,9 +24,18 @@ var welcomePage = function () {
     this.settingsElem = element(by.className('stg'));    
     this.actionButtonElem = element.all(by.className('btn btn-default'));
     this.mainNavLabelsElem = element.all(by.xpath("//nav[@class='main-nav']/ul/li"));
-    
+    this.todaysNewsHeaderElem = element(by.xpath("//label[@id='todaysNews']"));
     
     var self = this;
+    this.validateDateInNewsHeader = function(){
+    	var today = new Date;
+    	var date = today.getDate();
+    	var day = basePage.convertToDay(today.getDay());
+    	var number = today.getMonth()+1;
+    	var month = basePage.convertToMonth(number-1);
+    	var year = today.getFullYear();
+    	expect(this.todaysNewsHeaderElem.getText()).toContain(number+"/"+date+"/"+year);
+    }
     this.checkAllItemsInWlcmScrn = function(){
     	/*var EC = protractor.ExpectedConditions;
         browser.wait(EC.visibilityOf(self.welcomeUser));
@@ -47,6 +56,7 @@ var welcomePage = function () {
         expect(self.settingsElem).toBeDefined();
         expect(self.actionButtonElem.getText()).toEqual(constants.actionButtonLabels);
         expect(self.AKNCLogoElem).toBeDefined();
+        this.validateDateInNewsHeader();
         
         var format = 'MMMM DD, YYYY';
         var expectedDate = moment().format('dddd MMMM D, YYYY');

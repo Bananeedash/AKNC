@@ -76,27 +76,22 @@ var schedulingMainScreen = function(){
 	this.navigateToDate = function(){
 		var calendarDate;
 		var date1;
-		if(date>=29){
+		if(date>=25){
 			date1=date-3;
 		}
-		else if(date<=3){
+		else{
 			date1=date+3;
 		}
-		else
-			date1=date+3;
 		this.calenderDatesElem.each(function(elem,index) {
 			elem.getText().then(function(d) {
 				//console.log("d:"+d+"  date:"+date1);
 				if(d==date1){
-					elem.click().then(function(arg0) {
+					elem.click();/*.then(function(arg0) {
 						//console.log('click'+date1);
-					})
-				}
-					
+					})*/
+				}	
 			})
-			
 		})
-		//browser.sleep(9000);
 		expect(this.schNavTab.get(0).getText()).toContain(date1);
 	}
 	this.checkAProvider = function(nameAbbr){
