@@ -51,6 +51,8 @@ var patientDetails = function(){
 	this.nickNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='NickName']/ancestor::div[@class='divControl']//span"));
 	this.prvLastNameInputElem = element(by.xpath("//input[@ng-reflect-name='PrvLastName']"));
 	this.prvLastNameTooltipElem = element(by.xpath("//input[@ng-reflect-name='PrvLastName']/ancestor::div[@class='divControl']//span"));
+	this.MIInputElem = element(by.xpath("//input[@id='mi']"));
+	this.MITooltipElem = element(by.xpath("//input[@id='mi']/ancestor::div[@class='subDivControlRight']//span"));
 	
 	//Drop-down elements
 	this.genderDrdElem = element(by.xpath("//select[@ng-reflect-name='Gender']"));
@@ -381,7 +383,7 @@ var patientDetails = function(){
 		})
 	}
 	
-	//REQUIRED FIELDS VALIDATION
+	//FIELD VALIDATIONS
 	this.lastNameFieldValidation = function(){
 		var lastname = this.lastNameInputElem.getAttribute('value');
 		var flag=0;
@@ -546,6 +548,47 @@ var patientDetails = function(){
 		})
 		expect(this.prvLastNameTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
 		this.prvLastNameInputElem.clear().sendKeys(prvLastname);
+	}
+	this.validateMIField = function(){
+		var prvLastname = this.MIInputElem.getAttribute('value');
+		var flag=0;
+		this.MIInputElem.clear().then(function(){
+			self.MIInputElem.sendKeys(constants.splCharInput).then(function() {
+				//console.log('Special Char');
+			})			
+		})
+		expect(this.MITooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.MIInputElem.clear().then(function(){
+			self.MIInputElem.sendKeys(constants.numericInput).then(function() {
+				//console.log('Numeric');
+			})
+		})
+		expect(this.MITooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.MIInputElem.clear().then(function(){
+			self.MIInputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				//console.log('Alphanumeric');
+			})
+		})
+		expect(this.MITooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.MIInputElem.clear().then(function(){
+			self.MIInputElem.sendKeys(constants.maxCharInput).then(function() {
+				//console.log('maximum');
+			})
+		})
+		this.MITooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			//console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			//console.log('is not displayed');
+		})
+		this.MIInputElem.clear().then(function(){
+			self.MIInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
+				//console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.MITooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
+		this.MIInputElem.clear().sendKeys(prvLastname);
 	}
 	this.validateAddress1Field = function(){
 		var add1 = this.add1InputElem.getAttribute('value');
@@ -718,6 +761,60 @@ var patientDetails = function(){
 		})
 		expect(this.aptTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 10.');
 		this.aptInputElem.clear().sendKeys(apt);
+	}
+	this.validateCityField = function(){
+		var city = this.cityInputElem.getAttribute('value');
+		var flag=0;
+		this.cityInputElem.clear().then(function(){
+			self.cityInputElem.sendKeys(constants.splCharInput).then(function() {
+				//console.log('Special Char');
+			})			
+		})
+		expect(this.cityTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.cityInputElem.clear().then(function(){
+			self.cityInputElem.sendKeys(constants.numericInput).then(function() {
+				//console.log('Numeric');
+			})
+		})
+		expect(this.cityTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.cityInputElem.clear().then(function(){
+			self.cityInputElem.sendKeys(constants.aphaNumericInput).then(function() {
+				//console.log('Alphanumeric');
+			})
+		})
+		expect(this.cityTooltipElem.getAttribute("textContent")).toContain('Digits or special characters are not allowed.');
+		this.cityInputElem.clear().then(function(){
+			self.cityInputElem.sendKeys(constants.maxCharInput).then(function() {
+				//console.log('maximum');
+			})
+		})
+		this.cityTooltipElem.isDisplayed().then(function() {
+			expect(flag).toEqual(1);
+			//console.log('is displayed');
+		},function(){
+			expect(flag).toEqual(0);
+			//console.log('is not displayed');
+		})
+		this.cityInputElem.clear().then(function(){
+			self.cityInputElem.sendKeys(constants.gtThanMaxCharInput).then(function() {
+				//console.log('More than Maximum Chars');
+			})
+		})
+		expect(this.cityTooltipElem.getAttribute("textContent")).toContain('The maximum length of the field is 35.');
+		this.cityInputElem.clear().sendKeys(city);
+	}
+	
+	this.demographicsFieldValidation = function(){
+		this.lastNameFieldValidation();
+		this.firstNameFieldValidation();
+		this.validateMIField();
+		this.nickNameFieldValidation();
+		this.validatePrvLastName();
+		this.verifyPhoneFieldFormat();
+		this.validateAddress1Field();
+		this.validateAddress2Field();
+		this.validateAPT();
+		this.validateCityField();
 	}
 	
 	this.verifyRequiredFields = function(){

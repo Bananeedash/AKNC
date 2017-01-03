@@ -52,21 +52,15 @@ describe('Demographics accordion',function(){
 	xit('should verify APT field can be left blank',function(){
 		patientDetails.verifyAptBlank();
 	})
-	it('should verify behaviour of sms pop-up',function(){
+	xit('should verify behaviour of sms pop-up',function(){
 		patientDetails.validateSMSPopUp();
 	})
-	it('should verify behaviour of Resend invite button',function(){
+	xit('should verify behaviour of Resend invite button',function(){
 		patientDetails.validateResendInvite();
 	})
 	it('should validate all free input fields',function(){
-		patientDetails.lastNameFieldValidation();
-		patientDetails.firstNameFieldValidation();
-		patientDetails.nickNameFieldValidation();
-		patientDetails.validatePrvLastName();
-		patientDetails.verifyPhoneFieldFormat();
-		patientDetails.validateAddress1Field();
-		patientDetails.validateAPT();
-		patientDetails.validateAddress2Field();
+		patientDetails.demographicsFieldValidation();	
+		
 	})
 	
 	
