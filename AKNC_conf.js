@@ -14,15 +14,13 @@ exports.config = {
         browser.manage().window().maximize();  
     },
     restartBrowserBetweenTests: false,
-    // Framework to use. Jasmine is recommended.
     framework: 'jasmine',
-    // Spec patterns are relative to the current working directory when
-    // protractor is called.
+
     specs: ['./Specs/*.js'],
     exclude: ['./Specs/baseSpec.js'],
     //specs: ['./Specs/patientHubValidations.js','./Specs/patientSearch.js','./Specs/demographicsValidation.js',
     //		'.Specs/schedulingDailyView.js','.Specs/welcomeScreenValidation.js'],
-    //specs: ['Specs/demographicsValidation.js'],
+    //specs: ['Specs/login.js'],
     
     allScriptsTimeout: 15000,
     //restartBrowserBetweenTests: true,

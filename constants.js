@@ -43,6 +43,7 @@ var constants = function() {
 	this.splCharInput = '@@#$';
 	this.numericInput = '8148';
 	this.aphaNumericInput = 'ASD7854';
+	this.alphabeticInput = 'AASDS';
 	this.maxCharInput = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
 	this.gtThanMaxCharInput = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
 	this.charInput150 = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'+

@@ -13,13 +13,14 @@ describe('Demographics accordion',function(){
 		patientSearchScreen.searchWithDOB();
 		patientSearchScreen.searchGridRowsElem.get(0).click();
 		patientHubScreen.navigateToPatientDetails();
+		patientDetails.validateAccordionHeaders();
     	patientDetails.validateAllElementsOfDemographicsAccordion();
     	patientDetails.demographicsEditButtonElem.click();
 	})
-	it('should verify the order of state options list',function(){
+	xit('should verify the order of state options list',function(){
 		patientDetails.validateAlphaOrderStateList();
 	})
-	it('should verify all mandatory fields',function(){
+	xit('should verify all mandatory fields',function(){
 		patientDetails.verifyRequiredFields();
 	})
 	xit('should verify that error message is displayed when only zip is input',function(){
@@ -58,7 +59,7 @@ describe('Demographics accordion',function(){
 	xit('should verify behaviour of Resend invite button',function(){
 		patientDetails.validateResendInvite();
 	})
-	it('should validate all free input fields',function(){
+	xit('should validate all free input fields',function(){
 		patientDetails.demographicsFieldValidation();	
 		
 	})

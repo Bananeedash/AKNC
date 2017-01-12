@@ -44,18 +44,18 @@ var welcomePage = function () {
         console.log(welcomeUser);
         })*/
     	browser.ignoreSynchronization = false;
-        expect(self.welcomeUserElem).toBeDefined();        
-        expect(self.patientsElem).toBeDefined();
-        expect(self.schedulingElem).toBeDefined();
-        expect(self.billingElem).toBeDefined();
-        expect(self.billingElem).toBeDefined();
-        expect(self.inboxElem).toBeDefined();
-        expect(self.wizardElem).toBeDefined();
-        expect(self.practiceMgmtElem).toBeDefined();
-        expect(self.usersElem).toBeDefined();
-        expect(self.settingsElem).toBeDefined();
-        expect(self.actionButtonElem.getText()).toEqual(constants.actionButtonLabels);
-        expect(self.AKNCLogoElem).toBeDefined();
+        expect(this.welcomeUserElem).toBeDefined();        
+        expect(this.patientsElem).toBeDefined();
+        expect(this.schedulingElem).toBeDefined();
+        expect(this.billingElem).toBeDefined();
+        expect(this.billingElem).toBeDefined();
+        expect(this.inboxElem).toBeDefined();
+        expect(this.wizardElem).toBeDefined();
+        expect(this.practiceMgmtElem).toBeDefined();
+        expect(this.usersElem).toBeDefined();
+        expect(this.settingsElem).toBeDefined();
+        expect(this.actionButtonElem.getText()).toEqual(constants.actionButtonLabels);
+        expect(this.AKNCLogoElem).toBeDefined();
         this.validateDateInNewsHeader();
         
         var format = 'MMMM DD, YYYY';

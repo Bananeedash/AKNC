@@ -54,7 +54,7 @@ var patientDetails = function(){
 	this.MIInputElem = element(by.xpath("//input[@id='mi']"));
 	this.MITooltipElem = element(by.xpath("//input[@id='mi']/ancestor::div[@class='subDivControlRight']//span"));
 	
-	//Drop-down elements
+	//Drop-down elements in Demographics
 	this.genderDrdElem = element(by.xpath("//select[@ng-reflect-name='Gender']"));
 	this.genderDrdOptionsElem = element.all(by.xpath("//select[@ng-reflect-name='Gender']//option"));
 	this.genderTooltipElem = element(by.xpath("//select[@ng-reflect-name='Gender']//ancestor::div[@class='form-group divWrapper']//span"));
@@ -87,10 +87,37 @@ var patientDetails = function(){
 	this.refPvdDrdElem= element(by.xpath("//select[@ng-reflect-name='Rp']"));
 	this.refPvdDrdOptionsElem= element.all(by.xpath("//select[@ng-reflect-name='Rp']//option"));
 	
-
+	//INSURANCE ACCORDION LOCATORS
+	this.insuranceHeadersElem = element.all(by.xpath('//div[@id="collapseTwo"]//b'));
+	this.insNameInputElem = element.all(by.xpath('//select[@id="name"]'));
+	this.insIDInputElem = element.all(by.xpath('//input[@id="id"]'));
+	this.insGrpInputElem = element.all(by.xpath('//input[@id="group"]'));
+	this.insPlanTypeInputElem = element.all(by.xpath('//input[@id="plantype"]'));
+	this.insAuthReqInputElem = element.all(by.xpath('//input[@id="authrequired"]'));
+	this.insPlayerNetInputElem = element.all(by.xpath('//input[@id="playernetwork"]'));
+	this.insPlanDedInputElem = element.all(by.xpath('//input[@id="plandeductible"]'));
+	this.insMaxOopInputElem = element.all(by.xpath('//input[@id="maxoop"]'));
+	this.insCoPayInputElem = element.all(by.xpath('//input[@id="copay"]'));
+	this.insEffDateInputElem = element.all(by.xpath('//input[@id="effdate"]'));
+	this.insTermDateInputElem = element.all(by.xpath('//input[@id="termdate"]'));
+	this.insPolHolderInputElem = element.all(by.xpath('//input[@id="policyholder"]'));
+	this.insPHDOBInputElem = element.all(by.xpath('//input[@id="phdob"]'));
+	this.insdedStartDateInputElem = element.all(by.xpath('//input[@id="deductiblestartdate"]'));
+	this.insCoInsInputElem = element.all(by.xpath('//input[@id="coinsurance"]'));
+	this.insWCCarrierInputElems = element.all(by.xpath('//div[@class="insurance-det"]//li//div/input'));	
+	
+	
+	
 	
 	
 	var self = this;
+	
+	this.validateAccordionHeaders = function(){
+		expect(this.patientDetailsAccordionsHeadersElem.get(0).getText()).toEqual('DEMOGRAPHICS');
+		expect(this.patientDetailsAccordionsHeadersElem.get(1).getText()).toEqual('INSURANCE');
+		expect(this.patientDetailsAccordionsHeadersElem.get(2).getText()).toEqual('APPOINTMENTS');
+		expect(this.patientDetailsAccordionsHeadersElem.get(3).getText()).toEqual('DOCUMENTS');
+	}
 
 	this.validateAllElementsOfDemographicsAccordion = function(){
 		expect(self.patientImgInDemographicsElem).toBeDefined();
@@ -936,6 +963,114 @@ var patientDetails = function(){
 			})
 		})
 	}
+	
+	//INSURANCE ACCORDION VALIDATIONS
+	this.verifyInsSections = function(){
+		expect(this.insuranceHeadersElem.get(0).getText()).toEqual('PRIMARY INSURANCE');
+		expect(this.insuranceHeadersElem.get(1).getText()).toEqual('SECONDARY INSURANCE');
+		expect(this.insuranceHeadersElem.get(2).getText()).toEqual('WC CARRIER');
+	}
+	
+	this.validatePlanDedField = function(){
+		this.insPlanDedInputElem.each(function(elem,index){
+			var planDed = elem.getAttribute('value');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.splCharInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.clear().then(function(){
+				elem.sendKeys('9878');
+			})
+			expect(elem.getAttribute('value')).toBe('$9,878');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.alphabeticInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.sendKeys(planDed);
+		})
+		
+	}
+	
+	this.validateMaxOopField = function(){
+		this.insMaxOopInputElem.each(function(elem,index){
+			var maxOop = elem.getAttribute('value');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.splCharInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.clear().then(function(){
+				elem.sendKeys('9878');
+			})
+			expect(elem.getAttribute('value')).toBe('$9,878');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.alphabeticInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.sendKeys(maxOop);
+		})
+	}
+	
+	this.validateCoPayField = function(){
+		this.insCoPayInputElem.each(function(elem,index){
+			var coPay = elem.getAttribute('value');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.splCharInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.clear().then(function(){
+				elem.sendKeys('9878');
+			})
+			expect(elem.getAttribute('value')).toBe('$9,878');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.alphabeticInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.sendKeys(coPay);
+		})
+	}
+	this.validatePolicyHolderField = function(){
+		this.insPolHolderInputElem.each(function(elem,index){
+			var polHolder = elem.getAttribute('value');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.splCharInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.clear().then(function(){
+				elem.sendKeys('9878');
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.alphabeticInput);
+			})
+			expect(elem.getAttribute('value')).toBe(constants.alphabeticInput);
+			elem.sendKeys(polHolder);
+		})
+	}
+	this.validateCoInsField = function(){
+		this.insCoInsInputElem.each(function(elem,index){
+			var coIns = elem.getAttribute('value');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.splCharInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.clear().then(function(){
+				elem.sendKeys('56');
+			})
+			expect(elem.getAttribute('value')).toBe('56%');
+			elem.clear().then(function(){
+				elem.sendKeys(constants.alphabeticInput);
+			})
+			expect(elem.getAttribute('value')).toBe('');
+			elem.clear().then(function(){
+				elem.sendKeys('7852');
+				browser.actions().sendKeys(protractor.Key.TAB).perform();
+			})
+			expect(elem.getAttribute('value')).toBe('100%');
+			elem.sendKeys(coIns);
+		})
+	}
+	
+	
 
 }
 module.exports = new patientDetails();
